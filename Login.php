@@ -1,3 +1,4 @@
+<php?
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,3 +128,4 @@
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+>
