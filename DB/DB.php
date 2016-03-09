@@ -11,6 +11,12 @@ if ($conn->connect_error)
  {
     die("Connection failed: " . $conn->connect_error);
 } 
+$drop = "DROP TABLE Booking,Status,Dispatcher,Taxi,Customer";
+if ($conn->query($drop) === TRUE) {
+    echo "Tables dropped";
+} else {
+    echo "Error dropping table: " . $conn->error;
+}
 
 // sql to create table
 $cust = "CREATE TABLE Customer (
@@ -31,16 +37,14 @@ if ($conn->query($cust) === TRUE) {
 }
 $Taxi = "CREATE TABLE Taxi (
 TaxiID VARCHAR(6) PRIMARY KEY, 
-Password VARCHAR(30) NOT NULL,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
 Address1 VARCHAR(50),
 Address2 VARCHAR(50),
-PhoneNo VARCHAR(20),
+PhoneNo Integer(10),
 Licenseplate VARCHAR(20),
 carsize INTEGER,
-StartTime TIMESTAMP,
-FinishTime TIMESTAMP
+WorkingHours VARCHAR(5)
 )";
 if ($conn->query($Taxi) === TRUE) {
     echo "Table Taxi created successfully";
@@ -52,8 +56,7 @@ DispatcherID VARCHAR(6) PRIMARY KEY,
 Password VARCHAR(30) NOT NULL,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
-StartTime TIMESTAMP,
-FinishTime TIMESTAMP
+WorkingHours VARCHAR(5)
  )";
  if ($conn->query($Dispatcher) === TRUE) {
     echo "Table Dispatcher created successfully";
