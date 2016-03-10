@@ -31,9 +31,9 @@ PayPalAcc VARCHAR(20)
 )";
 
 if ($conn->query($cust) === TRUE) {
-    echo "Table MyGuests created successfully";
+    echo "<br>Table MyGuests created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "<br>Error creating table: " . $conn->error;
 }
 $Taxi = "CREATE TABLE Taxi (
 TaxiID VARCHAR(6) PRIMARY KEY, 
@@ -41,27 +41,27 @@ FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
 Address1 VARCHAR(50),
 Address2 VARCHAR(50),
-PhoneNo Integer(10),
-Licenseplate VARCHAR(20),
-carsize INTEGER,
-WorkingHours VARCHAR(5)
+PhoneNo Integer(10) NOT NULL,
+Licenseplate VARCHAR(20) NOT NUlL UNIQUE,
+carsize INTEGER NOT NULL,
+WorkingHours VARCHAR(5) NOT NULL
 )";
 if ($conn->query($Taxi) === TRUE) {
-    echo "Table Taxi created successfully";
+    echo "<br>Table Taxi created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "<br>Error creating table: " . $conn->error;
 }
 $Dispatcher = "CREATE TABLE Dispatcher (
 DispatcherID VARCHAR(6) PRIMARY KEY, 
 Password VARCHAR(30) NOT NULL,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
-WorkingHours VARCHAR(5)
+WorkingHours VARCHAR(5) NOT NULL
  )";
  if ($conn->query($Dispatcher) === TRUE) {
-    echo "Table Dispatcher created successfully";
+    echo "<br>Table Dispatcher created successfully ";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "<br>Error creating table: " . $conn->error;
 }
 $Booking = "CREATE TABLE Booking (
 BookingID INT(6) PRIMARY KEY, 
@@ -78,9 +78,9 @@ FOREIGN KEY (TaxiID) REFERENCES Taxi(TaxiID),
 FOREIGN KEY (DispatcherID) REFERENCES Dispatcher(DispatcherID)
  )";
  if ($conn->query($Booking) === TRUE) {
-    echo "Table Booking created successfully";
+    echo "<br>Table Booking created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "<br>Error creating table: " . $conn->error;
 }
 $Status = "CREATE TABLE Status (
 DispatcherID VARCHAR(6) PRIMARY KEY, 
@@ -91,9 +91,9 @@ FOREIGN KEY (TaxiID) REFERENCES Taxi(TaxiID),
 FOREIGN KEY (DispatcherID) REFERENCES Dispatcher(DispatcherID)
  )";
  if ($conn->query($Status) === TRUE) {
-    echo "Table Dispatcher created successfully";
+    echo "<br>Table Dispatcher created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "<br>Error creating table: " . $conn->error;
 }
 $conn->close();
 ?>
