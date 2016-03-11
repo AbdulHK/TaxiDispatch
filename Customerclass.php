@@ -12,14 +12,15 @@
  	protected $Deleted;
  	function __construct( )	{ 
  	//we pass in params to consutrtor to create objects
- 		$this->ID= "1";
- 		$this->Password= "1";
- 		$this->Firstname= "1";
- 		$this->Surname= "1";
- 		$this->Address1= "1";
- 		$this->Address2= "1";
- 		$this->Phone= "1"; 
- 		$this->PayPalAcc= "1";
+ 		//whatever values in the form values goes between the single quotes..
+ 		$this->ID= $_POST[''];
+ 		$this->Password= $_POST[''];
+ 		$this->Firstname= $_POST[''];
+ 		$this->Surname= $_POST[''];
+ 		$this->Address1= $_POST[''];
+ 		$this->Address2= $_POST[''];
+ 		$this->Phone= $_POST['']; 
+ 		$this->PayPalAcc= $_POST[''];
  	
  	}
  	//getters
@@ -39,7 +40,7 @@
  		return $this->Password;
  	}function getPayPalAcc(){
  		return $this->PayPalAcc;
- 	}
+ 	}	
  	//setters
  	// do not forget to add variables in the setters methods
  	function setFirstname($Firstname){
@@ -59,7 +60,5 @@
  	}function setPayPalAcc($PayPalAcc){
  		return $this->PayPalAcc;
  	}
-
-
  }
 ?>
