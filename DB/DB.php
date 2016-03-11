@@ -27,7 +27,8 @@ LastName VARCHAR(50) NOT NULL,
 Phone Integer NOT NULL,
 Address1 VARCHAR(50),
 Address2 VARCHAR(50),
-PayPalAcc VARCHAR(20)
+PayPalAcc VARCHAR(20),
+Deleted VARCHAR(1)
 )";
 
 if ($conn->query($cust) === TRUE) {
@@ -44,7 +45,8 @@ Address2 VARCHAR(50),
 PhoneNo Integer(10) NOT NULL,
 Licenseplate VARCHAR(20) NOT NUlL UNIQUE,
 carsize INTEGER NOT NULL,
-WorkingHours VARCHAR(5) NOT NULL
+WorkingHours VARCHAR(5) NOT NULL,
+Deleted VARCHAR(1)
 )";
 if ($conn->query($Taxi) === TRUE) {
     echo "<br>Table Taxi created successfully";
@@ -56,6 +58,7 @@ DispatcherID VARCHAR(6) PRIMARY KEY,
 Password VARCHAR(30) NOT NULL,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
+Deleted VARCHAR(1),
 WorkingHours VARCHAR(5) NOT NULL
  )";
  if ($conn->query($Dispatcher) === TRUE) {
@@ -73,6 +76,7 @@ DropoffLoc VARCHAR(50),
 Payment VARCHAR(20),
 Total DECIMAL,
 time TIMESTAMP,
+Deleted VARCHAR(1),
 FOREIGN KEY (CustID) REFERENCES Customer(CustID),
 FOREIGN KEY (TaxiID) REFERENCES Taxi(TaxiID),
 FOREIGN KEY (DispatcherID) REFERENCES Dispatcher(DispatcherID)
