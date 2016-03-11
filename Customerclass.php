@@ -11,7 +11,7 @@
  	protected $PayPalAcc;
  	protected $Deleted;
  	function __construct( )	{ 
- 	//we pass in params to consutrtor to create objects
+ 		//we pass in params to consutrtor to create objects
  		//whatever values in the form values goes between the single quotes..
  		$this->ID= $_POST[''];
  		$this->Password= $_POST[''];

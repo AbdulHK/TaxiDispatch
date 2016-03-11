@@ -1128,6 +1128,19 @@ img {
 .img-rounded {
   border-radius: 6px;
 }
+.Btnsize{
+	min-width:90%;
+	width:auto;
+	height:50px;
+}
+.Formsize{
+	min-width:30%;
+	width:auto;
+	height:50px;
+	color:black;
+	overflow:hidden;
+	border:1px solid orange;
+}
 .img-thumbnail {
   display: inline-block;
   max-width: 100%;
