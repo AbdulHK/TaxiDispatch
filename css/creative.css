@@ -150,10 +150,34 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/header.jpg');
   text-align: center;
   color: white;
 }
+
+
+.index-bg {
+background: url('../img/header.jpg');
+  position: relative;
+  width: 100%;
+  background-position: center;
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+
+}
+.login-bg {
+background: url('../img/header1.jpg');
+  position: relative;
+  width: 100%;
+  background-position: center;
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+
+}
+
 header .header-content {
   position: relative;
   text-align: center;
