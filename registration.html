@@ -83,7 +83,7 @@
 			<div class="header-content-inner_2">
 			<div class="content-inner-holder">
 				<h2>Registration</h2>
-			  <form role="form" method="post" class="form-horizontal" action="register.php">
+			  <form role="form" name="registration" method="post" class="form-horizontal" action="register.php">
 				<div class="form-group">
 				<label for="inputfirstname" class="col-md-4 control-label">First Name</label>
 				<div class="col-md-8">
@@ -99,7 +99,7 @@
 				<div class="form-group">
 					<label for="inputemail" class="col-md-4">E-mail</label>
 					<div class="col-md-8">
-					<input type="email" class="form-control" placeholder="Enter E-mail" name="inputemail"></input>
+					<input type="email" class="form-control" placeholder="Enter E-mail" name="inputemail" id="inputemail" onchange="validateEmail()"></input>
 					</div>
 				</div>
 				<div class="form-group">
@@ -118,13 +118,13 @@
 				<div class="form-group">
 					<label for="inputpassword" class="col-md-4">Password</label>
 					<div class="col-md-8">
-					<input type="password" class="form-control" name="inputpassword">
+					<input type="password" class="form-control" name="inputpassword" id="inputpassword" >
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputconfirmpassword" class="col-md-4">Confirm Password</label>
 					<div class="col-md-8">
-					<input type="password" name="" class="form-control">
+					<input type="password" name="inputconfirmpassword" class="form-control" id='inputconfirmpassword' onchange="myFunction()">
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary" value="Send">Submit</button>
@@ -170,7 +170,9 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
+        
+    <script src="js/check-password-1.js"></script>  
+    <script src="js/validate-email.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
