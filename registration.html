@@ -83,51 +83,51 @@
 			<div class="header-content-inner_2">
 			<div class="content-inner-holder">
 				<h2>Registration</h2>
-			  <form role="form" class="form-horizontal">
+			  <form role="form" method="post" class="form-horizontal" action="register.php">
 				<div class="form-group">
 				<label for="inputfirstname" class="col-md-4 control-label">First Name</label>
 				<div class="col-md-8">
-				<input type="text" class="form-control" id="inputfirstname" placeholder="Enter First Name" />
+				<input type="text" class="form-control" placeholder="Enter First Name" name="inputfirstname" />
 				</div>
 				</div>
 				<div class="form-group">
 				<label for="inputlastname" class="col-md-4 control-label">Last Name</label>
 				<div class="col-md-8">
-				<input type="text" class="form-control" id="inputlastname" placeholder="Enter Last Name" />
+				<input type="text" class="form-control" placeholder="Enter Last Name" name="inputlastname" />
 				</div>
 				</div>
 				<div class="form-group">
 					<label for="inputemail" class="col-md-4">E-mail</label>
 					<div class="col-md-8">
-					<input type="email" class="form-control" id="inputemail" placeholder="Enter E-mail"></input>
+					<input type="email" class="form-control" placeholder="Enter E-mail" name="inputemail"></input>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputphone" class="col-md-4">Phone</label>
 					<div class="col-md-8">
-					<input type="text" maxlength="10" pattern="[0-9]{10}" class="form-control" id="inputphone" placeholder="Enter Phone"></input>
+					<input type="text" maxlength="10" pattern="[0-9]{10}" class="form-control" id="inputphone" placeholder="Enter Phone" name="inputphone"></input>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputaddress" class="col-md-4">Address</label>
 					<div class="col-md-8">
-					<input type="text" class="form-control" id="inputaddress" placeholder="Enter Address"></input>
-					<input type="text" class="form-control" id="inputaddress2" placeholder="Enter Address 2"></input>
+					<input type="text" class="form-control" id="inputaddress" placeholder="Enter Address" name="inputaddress"></input>
+					<input type="text" class="form-control" id="inputaddress2" placeholder="Enter Address 2" name="inputaddress2"></input>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputpassword" class="col-md-4">Password</label>
 					<div class="col-md-8">
-					<input type="password" name="" class="form-control" value="password">
+					<input type="password" class="form-control" name="inputpassword">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputconfirmpassword" class="col-md-4">Confirm Password</label>
 					<div class="col-md-8">
-					<input type="password" name="" class="form-control" value="">
+					<input type="password" name="" class="form-control">
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary" value="Send">Submit</button>
 			  </form>
 			  </div>
 			 </div>

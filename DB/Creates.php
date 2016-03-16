@@ -1,4 +1,4 @@
-<?php
+ <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -20,7 +20,7 @@ if ($conn->query($drop) === TRUE) {
 
 // sql to create table
 $cust = "CREATE TABLE Customer (
-CustID INTEGER(6) PRIMARY KEY, 
+CustID INTEGER(6) PRIMARY KEY AUTO_INCREMENT, 
 Password VARCHAR(30) NOT NULL,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
@@ -37,7 +37,7 @@ if ($conn->query($cust) === TRUE) {
     echo "<br>Error creating table: " . $conn->error;
 }
 $Taxi = "CREATE TABLE Taxi (
-TaxiID INTEGER(6) PRIMARY KEY, 
+TaxiID INTEGER(6) PRIMARY KEY AUTO_INCREMENT, 
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
 Address1 VARCHAR(50),
@@ -55,11 +55,11 @@ if ($conn->query($Taxi) === TRUE) {
     echo "<br>Error creating table: " . $conn->error;
 }
 $Dispatcher = "CREATE TABLE Dispatcher (
-DispatcherID INTEGER(6) PRIMARY KEY, 
+DispatcherID INTEGER(6) PRIMARY KEY AUTO_INCREMENT, 
 Password VARCHAR(30) NOT NULL,
 FirstName VARCHAR(30) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
-Deleted VARCHAR(1),
+Deleted VARCHAR(1) DEFAULT 'N',
 StartTime TIME  NOT NULL,
 FinishTime TIME NOT NULL
  )";
@@ -69,15 +69,16 @@ FinishTime TIME NOT NULL
     echo "<br>Error creating table: " . $conn->error;
 }
 $Booking = "CREATE TABLE Booking (
-BookingID INTEGER(6) PRIMARY KEY, 
+BookingID INTEGER(6) PRIMARY KEY AUTO_INCREMENT, 
 CustID INTEGER(6) NOT NULL,
-TaxiID INTEGER(6) NOT NULL,
+TaxiID INTEGER(6) ,
 DispatcherID INTEGER(6),
 PickupLoc VARCHAR(50) NOT NULL,
 DropoffLoc VARCHAR(50),
 Payment VARCHAR(20),
 Total DECIMAL,
-time TIMESTAMP,
+Time TIMESTAMP,
+BookingTime DATETIME,
 Deleted VARCHAR(1) DEFAULT 'N',
 FOREIGN KEY (CustID) REFERENCES Customer(CustID),
 FOREIGN KEY (TaxiID) REFERENCES Taxi(TaxiID),
@@ -97,7 +98,7 @@ FOREIGN KEY (TaxiID) REFERENCES Taxi(TaxiID),
 FOREIGN KEY (DispatcherID) REFERENCES Dispatcher(DispatcherID)
  )";
  if ($conn->query($Status) === TRUE) {
-    echo "<br>Table Dispatcher created successfully";
+    echo "<br>Table Status created successfully";
 } else {
     echo "<br>Error creating table: " . $conn->error;
 }
