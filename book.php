@@ -6,7 +6,8 @@ $lastname = $_POST['inputlastname'];
 $pickup = $_POST['inputpickup'];
 $dropoff = $_POST['inputdropoff'];
 $mobile = $_POST['inputphone'];
-$email = $_POST['inputdatetime'];
+$datetime = $_POST['inputdatetime'];
+$payment= $_POST['Payment'];
 
 // To protect MySQL injection 
 $firstname= stripslashes($firstname);
@@ -21,11 +22,14 @@ $mobile= stripslashes($mobile);
 $mobile= mysql_real_escape_string($mobile);
 $datetime= stripslashes($datetime);
 $datetime= mysql_real_escape_string($datetime);
-//add it to the users table
+$payment= stripslashes($payment);
+$payment= mysql_real_escape_string($payment);
 
-$cust="INSERT INTO Booking (`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`) VALUES ('$firstname','$lastname','$mobile')";
 
-mysql_query($cust);
+$book="INSERT INTO Booking (`Firstname`,`Lastname`,`Phone`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`) VALUES ('$firstname','$lastname','$mobile','$pickup','$dropoff','$payment','$datetime')";
+
+
+
+mysql_query($book);
 mysql_close($conn);
-require_once("index.html");
 ?>
