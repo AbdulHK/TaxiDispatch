@@ -1,17 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-//$dbname = "myDB";
-
-// Create connection
-$conn =mysql_connect($servername, $username, $password);
-// Check connection
-
-    if ( $conn === FALSE ) die('Fail message');
-    if ( mysql_select_db("myDB") === FALSE ) die("Fail message");
-
-
+require_once("DB/DB.php");
 //get the userinput from the form 
 $firstname = $_POST['inputfirstname'];
 $lastname = $_POST['inputlastname'];
@@ -51,4 +39,5 @@ if ($conn->query($cust) === TRUE)
 */
 mysql_query($cust);
 mysql_close($conn);
+require_once("index.html");
 ?>
