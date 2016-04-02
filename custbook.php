@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -19,11 +19,15 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
+
+
+
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
+
 
 </head>
 
@@ -39,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-				<a class="navbar-brand page-scroll" href="#page-top">Kadab's Cabs</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Kadab's Cabs</a>
                 <a class="navbar-brand" href="#">Book</a>
                 <a class="navbar-brand" href="login.php">Login</a>
                 <a class="navbar-brand" href="#">DIT</a>
@@ -73,66 +77,57 @@
         <div class="header-content">
 			<img border="0" alt="Kadab"  src="img/icon.png">
             <div class="header-content-inner">
-			<div class="header-content-inner_2">
+			<div class="header-content-inner_2"> 							<!-- Orange BOX (inner_2) -->
+
+			
 			<div class="content-inner-holder">
-				<h2>Registration</h2>
-			  <form role="form" name="registration" method="post" class="form-horizontal" action="register.php">
-				<div class="form-group">
-				<label for="inputfirstname" class="col-md-4 control-label">First Name*</label>
-				<div class="col-md-8">
-				<input type="text" class="form-control" placeholder="Enter First Name" id="inputfirstname" name="inputfirstname" required/>
-				</div>
-				</div>
-				<div class="form-group">
-				<label for="inputlastname" class="col-md-4 control-label">Last Name</label>
-				<div class="col-md-8">
-				<input type="text" class="form-control" placeholder="Enter Last Name" id="inputlastname" name="inputlastname" />
-				</div>
-				</div>
-				<div class="form-group">
-					<label for="inputemail" class="col-md-4">E-mail*</label>
-					<div class="col-md-8">
-					<input type="email" class="form-control" placeholder="Enter E-mail" name="inputemail" id="inputemail" onchange="validateEmail()" required></input>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputphone" class="col-md-4">Phone*</label>
-					<div class="col-md-8">
-					<input type="text" maxlength="10" pattern="[0-9]{10}" class="form-control" id="inputphone" placeholder="Enter Phone"  required name="inputphone"></input>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputaddress" class="col-md-4">Address</label>
-					<div class="col-md-8">
-					<input type="text" class="form-control" id="inputaddress" placeholder="Enter Address" name="inputaddress" ></input>
-					<input type="text" class="form-control" id="inputaddress2" placeholder="Enter Address 2" name="inputaddress2"></input>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputpassword" class="col-md-4">Password*</label>
-					<div class="col-md-8">
-					<input type="password" class="form-control" name="inputpassword" id="inputpassword" required >
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="inputconfirmpassword" class="col-md-4">Confirm Password*</label>
-					<div class="col-md-8">
-					<input type="password" name="inputconfirmpassword" class="form-control" id='inputconfirmpassword' required onchange="myFunction()">
-					</div>
-				</div>
-				<button type="submit" class="btn btn-primary" value="Send">Submit</button>
-			  </form>
+						<?php
+						require_once("DB/DB.php");
+				//get the userinput from the form 
+				$custid = $_POST['inputcustid'];
+				$pickup = $_POST['inputpickup'];
+				$dropoff = $_POST['inputdropoff'];
+				$datetime = $_POST['inputdatetime'];
+				$payment= $_POST['Payment'];
+				$passengers= $_POST['inputpassengers'];
+
+				//$passengers= $_POST['inputpassengers'];
+				// To protect MySQL injection 
+				$custid= stripslashes($custid);
+				$custid= mysql_real_escape_string($custid);
+				$pickup= stripslashes($pickup);
+				$dropoff= stripslashes($dropoff);
+				$pickup= mysql_real_escape_string($pickup);
+				$dropoff= mysql_real_escape_string($dropoff);
+				$datetime= stripslashes($datetime);
+				$datetime= mysql_real_escape_string($datetime);
+				$payment= stripslashes($payment);
+				$payment= mysql_real_escape_string($payment);
+				$passengers= stripslashes($passengers);
+				$passengers= mysql_real_escape_string($passengers);
+					
+
+				$book="INSERT INTO Booking (`CustID`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
+									 VALUES ('$custid','$passengers','$pickup','$dropoff','$payment','$datetime')";
+				if(mysql_query($book)== TRUE)
+				{
+					echo "done";
+				}
+				else
+				{
+					echo "something is not quite right, go back and check your booking.";
+				}
+				mysql_close($conn);
+				?>
 			  </div>
 			 </div>
             </div>
         </div>
     </header>
 
-
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-        
-    <script src="js/validation.js"></script>  
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
