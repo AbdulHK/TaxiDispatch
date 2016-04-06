@@ -111,12 +111,25 @@
 									 VALUES ('$custid','$passengers','$pickup','$dropoff','$payment','$datetime')";
 				if(mysql_query($book)== TRUE)
 				{
-					echo "done";
+                    $bookinginfo=mysql_query("select * from Booking where CustID='$custid'
+                        AND PickupLoc='$pickup'");
+                while($row = mysql_fetch_array($bookinginfo))
+                {
+                    echo "Your Booking ID is :{$row[0]}  <br> ".
+                    "Your Customer ID is :{$row[1]}  <br> ".
+                    "Your Passenger number is :{$row[5]}  <br> ".
+                    "Your Pickup Location is :{$row[8]}  <br> ".
+                    "Your Drop off Location is :{$row[9]}  <br> ".
+                    "Your Payment type is :{$row[10]}  <br> ".
+                    "Your Booking Time is :{$row[12]}  <br> ";
+                }    
+
 				}
 				else
 				{
 					echo "something is not quite right, go back and check your booking.";
 				}
+
 				mysql_close($conn);
 				?>
 			  </div>
