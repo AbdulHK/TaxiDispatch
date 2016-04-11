@@ -106,15 +106,15 @@ session_start();
                     </li>
                     <?php
 
-                        if(! isset($_SESSION["success"]) OR ! isset($_SESSION["custsucess"]) )
+                        if(!isset($_SESSION["name"])) 
                         { //if session not found
                         ?>
                         <li>
-                        <a class="page-scroll"href="dispatcherlogin.php">  Dispatcher Sign in       </a>
+                        <a class="page-scroll"href="dispatcherlogin.html">  Dispatcher Sign in       </a>
                                             </li>
                                             <li>
 
-                        <a class="page-scroll"href="customerlogin.php">  customer Sign in       </a>
+                        <a class="page-scroll"href="customerlogin.html">  customer Sign in       </a>
                                             </li>
 
 
