@@ -105,10 +105,10 @@
 		{
 			if(strcmp($ID , $row[0]) == 0 && $password == $row[1] ) 
 				{
-                    $name=$row[3];
+                    $name=$row[2];
 					echo "logged in";
-					$_SESSION["name"] = $_POST["name"] ; 
-					$_SESSION["success"] = "Welcome, ".$_POST["$name"]; 
+					$_SESSION['name'] = $name ; 
+					$_SESSION["success"] = "Welcome, ".$name; 
 		}else 
         {
 			echo "sorry";

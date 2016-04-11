@@ -1,16 +1,20 @@
 <?php
 session_start();
+                        if ( isset($_SESSION["error"]) ) 
+                            {  
+                            unset($_SESSION["error"]); 
+                            } 
+                            if ( isset($_SESSION["success"]) ) 
+                            { 
+                             $_SESSION["success"];
 
-//check for session
-if ( isset($_SESSION["error"]) ) 
-{  
-unset($_SESSION["error"]); 
-} 
-if ( isset($_SESSION["success"]) ) 
-{ 
+                            }
+                            if ( isset($_SESSION["custsucess"]) ) 
+                            { 
 
-echo $_SESSION["success"];
-} 
+                            $_SESSION["custsucess"];
+                            }  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,10 +59,43 @@ echo $_SESSION["success"];
                 </button>
 				                <a class="navbar-brand page-scroll" href="#page-top"></a>
 				                <a class="navbar-brand" href="index.html">Kadab's Cabs</a>
-				                <a class="navbar-brand" href="book.html">Book</a>
+                                <?php 
+                                if (! isset($_SESSION["custsucess"]) ) 
+                                {
+                                ?>
+                                 <a class="navbar-brand" href="book.html">Book</a>
+                                <?php
+                                }
+                                else
+                                 {
+                                ?>
+                                <a class="navbar-brand" href="custbook.html">Book</a>
+                                <?php
+                                 } 
+                                 ?>
+				                
 								<a class="navbar-brand" href="customerlogin.html">Customer Login</a>
                                 <a class="navbar-brand" href="dispatcherlogin.html">Dispatcher Login</a>
                                 <a class="navbar-brand" href="registration.html">Register</a>
+                                <a class="navbar-brand page-scroll">
+                                <?php  
+                                //check for session
+                            if ( isset($_SESSION["error"]) ) 
+                            {  
+                            unset($_SESSION["error"]); 
+                            } 
+                            if ( isset($_SESSION["success"]) ) 
+                            { 
+                            echo $_SESSION["success"];
+
+                            }
+                            if ( isset($_SESSION["custsucess"]) ) 
+                            { 
+
+                            echo $_SESSION["custsucess"];
+                            }  
+?>
+</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -69,7 +106,7 @@ echo $_SESSION["success"];
                     </li>
                     <?php
 
-                        if(! isset($_SESSION["success"]) )
+                        if(! isset($_SESSION["success"]) OR ! isset($_SESSION["custsucess"]) )
                         { //if session not found
                         ?>
                         <li>

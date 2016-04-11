@@ -1,6 +1,9 @@
+<?php      
+session_start()
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -19,11 +22,15 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
+
+
+
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
+
 
 </head>
 
@@ -34,13 +41,13 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only"> Toggle navigation</span>
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top"></a>
-                                <a class="navbar-brand" href="index.html">Kadab's Cabs</a>
+                                <a class="navbar-brand" href="index.php">Kadab's Cabs</a>
                                 <a class="navbar-brand" href="book.html">Book</a>
                                 <a class="navbar-brand" href="customerlogin.html">Customer Login</a>
                                 <a class="navbar-brand" href="dispatcherlogin.html">Dispatcher Login</a>
@@ -51,7 +58,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="about.php">About</a>
+                        <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#services">Services</a>
@@ -60,7 +67,7 @@
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact.php">Contact</a>
+                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -73,26 +80,52 @@
         <div class="header-content">
 			<img border="0" alt="Kadab"  src="img/icon.png">
             <div class="header-content-inner">
-			<div class="header-content-inner_2">
+			<div class="header-content-inner_2"> 							<!-- Orange BOX (inner_2) -->
+
+			
 			<div class="content-inner-holder">
-				<h2> Customer Login</h2>
-			  <form role="form" action="customerlogin.php" method="POST">
-				<div class="form-group">
-				  <label for="text">ID:</label>
-				  <input type="text" class="form-control" name="inputcustid" id="inputcustid" placeholder="enter your customer ID here">
-				</div>
-				<div class="form-group">
-				  <label for="pwd">Password:</label>
-				  <input type="password" class="form-control" name="inputpassword"  id="inputpassword" placeholder="Enter password here">
-				
-				<button type="submit" class="btn btn-primary">Submit</button>
-			  </form>
+
+		<?php
+		require_once("DB/DB.php");
+		//get the userinput from the form 
+		$ID = $_POST['inputcustid'];
+		$password = $_POST['inputpassword'];
+
+		// To protect MySQL injection 
+		$ID= stripslashes($ID);
+		$password= stripslashes($password);
+		$ID= mysql_real_escape_string($ID);
+		$password= mysql_real_escape_string($password);
+
+
+			
+
+		$login=mysql_query("select CustID,Password,FirstName from Customer where CustID='$ID'");
+
+		while ($row =mysql_fetch_row($login))
+		{
+			if(strcmp($ID , $row[0]) == 0 && $password == $row[1] ) 
+				{
+                     $name=$row[2];
+                    echo "logged in";
+                    $_SESSION['name'] = $name ; 
+                    $_SESSION["custsucess"] = "Welcome, ".$name; 
+		}else 
+        {
+			echo "sorry";
+			$_SESSION["error"] = "Incorrect password OR username."; 
+
+
+		}
+			}
+		mysql_close($conn);
+		?>
+								
 			  </div>
 			 </div>
             </div>
         </div>
     </header>
-   
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
