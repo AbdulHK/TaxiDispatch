@@ -43,11 +43,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Kadab's Cabs</a>
-                <a class="navbar-brand" href="#">Book</a>
+                <a class="navbar-brand page-scroll" href="index.html">Kadab's Cabs</a>
+                <a class="navbar-brand" href="book.html">Book</a>
                 <a class="navbar-brand" href="login.php">Login</a>
                 <a class="navbar-brand" href="#">DIT</a>
-                <a class="navbar-brand" href="CustomerRegister.php">Register</a>
+                <a class="navbar-brand" href="registration.php">Register</a>
                 <a class="navbar-brand" href="#">Register</a>
             </div>
 
@@ -105,7 +105,7 @@
 				$payment= mysql_real_escape_string($payment);
 				$passengers= stripslashes($passengers);
 				$passengers= mysql_real_escape_string($passengers);
-					
+				
 
 				$book="INSERT INTO Booking (`CustID`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
 									 VALUES ('$custid','$passengers','$pickup','$dropoff','$payment','$datetime')";
@@ -113,15 +113,19 @@
 				{
                     $bookinginfo=mysql_query("select * from Booking where CustID='$custid'
                         AND PickupLoc='$pickup'");
-                while($row = mysql_fetch_array($bookinginfo))
+                    $custinfo=mysql_query("select * from Customer where CustID='$custid'");
+                while($row = mysql_fetch_array($bookinginfo) and $cust =mysql_fetch_array($custinfo))
                 {
-                    echo "Your Booking ID is :{$row[0]}  <br> ".
-                    "Your Customer ID is :{$row[1]}  <br> ".
-                    "Your Passenger number is :{$row[5]}  <br> ".
-                    "Your Pickup Location is :{$row[8]}  <br> ".
-                    "Your Drop off Location is :{$row[9]}  <br> ".
-                    "Your Payment type is :{$row[10]}  <br> ".
-                    "Your Booking Time is :{$row[12]}  <br> ";
+                    echo "Booking ID is :{$row[0]}  <br> ".
+                    "Customer ID :{$row[1]}  <br> ".
+                    "First Name:{$cust[2]}  <br> ".
+                    "Last Name :{$cust[3]}  <br> ".
+                    "Phone number:{$cust[4]}  <br> ".
+                    "Passenger number :{$row[5]}  <br> ".
+                    "Pickup Location :{$row[8]}  <br> ".
+                    "Drop off Location :{$row[9]}  <br> ".
+                    "Payment type :{$row[10]}  <br> ".
+                    "Booking Time :{$row[12]}  <br> ";
                 }    
 
 				}

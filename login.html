@@ -25,13 +25,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body id="page-top">
@@ -83,19 +76,16 @@
             <div class="header-content-inner">
 			<div class="header-content-inner_2">
 			<div class="content-inner-holder">
-				<h2>Login</h2>
-			  <form role="form">
+				<h2> Dispatcher Login</h2>
+			  <form role="form" action="dispatcherlogin.php" method="POST">
 				<div class="form-group">
-				  <label for="email">ID:</label>
-				  <input type="email" class="form-control" id="email" placeholder="Your ID can be your Email,PhoneNumber,ID">
+				  <label for="text">ID:</label>
+				  <input type="text" class="form-control" name="inputdispatcherid" id="inputdispatcherid" placeholder="enter your Dispatcher ID here">
 				</div>
 				<div class="form-group">
 				  <label for="pwd">Password:</label>
-				  <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-				</div>
-				<div class="checkbox">
-				  <label><input type="checkbox"> Remember me</label>
-				</div>
+				  <input type="password" class="form-control" name="inputpassword"  id="inputpassword" placeholder="Enter password here">
+				
 				<button type="submit" class="btn btn-primary">Submit</button>
 			  </form>
 			  </div>
