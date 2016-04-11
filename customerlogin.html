@@ -25,13 +25,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body id="page-top">
@@ -47,13 +40,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top"></a>
-                <a class="navbar-brand" href="index.html">Kadab's Cabs</a>
-                <a class="navbar-brand" href="book.html">Book</a>
-                <A href="Book.html"</A>
-                <a class="navbar-brand" href="login.php">Login</a>
-                <A href="Login.html"</A> 
-               <a class="navbar-brand" href="register.html">Register</a>
-		<A href="Register.html"</A>
+                                <a class="navbar-brand" href="index.html">Kadab's Cabs</a>
+                                <a class="navbar-brand" href="book.html">Book</a>
+                                <a class="navbar-brand" href="customerlogin.html">Customer Login</a>
+                                <a class="navbar-brand" href="dispatcherlogin.html">Dispatcher Login</a>
+                                <a class="navbar-brand" href="registration.html">Register</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,58 +69,30 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <header class="index-bg">
+    <header class="login-bg">
         <div class="header-content">
 			<img border="0" alt="Kadab"  src="img/icon.png">
             <div class="header-content-inner">
-			
-				<form role="form" class="container-fluid">
-					<div class="form-group">
-					<div class="controls controls-row row-fluid">
-						<input type="text" class="Formsize" placeholder="Pick-up" /><input type="text" class="Formsize" placeholder="Drop-Off" /><input type="datetime-local" class="Formsize" placeholder="Date" /><button href="#about" class="Btnsize btn-primary btn-xl">Book</button>
-					</div>
-					</div>
-				</form>
+			<div class="header-content-inner_2">
+			<div class="content-inner-holder">
+				<h2> Dispatcher Login</h2>
+			  <form role="form" action="customerlogin.php" method="POST">
+				<div class="form-group">
+				  <label for="text">ID:</label>
+				  <input type="text" class="form-control" name="inputdispatcherid" id="inputcustid" placeholder="enter your customer ID here">
+				</div>
+				<div class="form-group">
+				  <label for="pwd">Password:</label>
+				  <input type="password" class="form-control" name="inputpassword"  id="inputpassword" placeholder="Enter password here">
 				
-                <h1>Welcome to Kadab Cabs</h1>
-                <hr>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			  </form>
+			  </div>
+			 </div>
             </div>
         </div>
     </header>
-
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Need a Cab</h2>
-                    <hr class="light">
-                    <p class="text-faded">Kadab cabs will take you where you need to go</p>
-                    <a href="book.html" class="page-scroll btn btn-default btn-xl">Book a Cab!</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Kadab cabs will get you to your destination </h2>
-                    <hr class="primary">
-                    <p>Get in Touch</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                    <p>Phone 123-456-6789</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="mailto:your-email@your-domain.com">kadabcabs@gmail.com</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

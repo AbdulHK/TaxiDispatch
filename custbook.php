@@ -43,12 +43,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Kadab's Cabs</a>
-                <a class="navbar-brand" href="book.html">Book</a>
-                <a class="navbar-brand" href="login.php">Login</a>
-                <a class="navbar-brand" href="#">DIT</a>
-                <a class="navbar-brand" href="registration.php">Register</a>
-                <a class="navbar-brand" href="#">Register</a>
+                <a class="navbar-brand page-scroll" href="#page-top"></a>
+                                <a class="navbar-brand" href="index.html">Kadab's Cabs</a>
+                                <a class="navbar-brand" href="book.html">Book</a>
+                                <a class="navbar-brand" href="customerlogin.html">Customer Login</a>
+                                <a class="navbar-brand" href="dispatcherlogin.html">Dispatcher Login</a>
+                                <a class="navbar-brand" href="registration.html">Register</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
