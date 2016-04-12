@@ -108,7 +108,8 @@ session_start()
 				{
                      $name=$row[2];
                     echo "logged in";
-                    $_SESSION['name'] = $name ; 
+                    $_SESSION["custid"] = $ID ; 
+                    $_SESSION["name"] = $name ; 
                     $_SESSION["custsucess"] = "Welcome, ".$name; 
 		}else 
         {

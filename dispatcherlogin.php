@@ -107,7 +107,8 @@
 				{
                     $name=$row[2];
 					echo "logged in";
-					$_SESSION['name'] = $name ; 
+                    $_SESSION["dispatcherid"]= $ID;
+					$_SESSION["name"] = $name ; 
 					$_SESSION["success"] = "Welcome, ".$name; 
 		}else 
         {
