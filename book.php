@@ -1,6 +1,24 @@
+<?php
+session_start();
+                        if ( isset($_SESSION["error"]) ) 
+                            {  
+                            unset($_SESSION["error"]); 
+                            } 
+                            if ( isset($_SESSION["success"]) ) 
+                            { 
+                             $_SESSION["success"];
 
+                            }
+                            if ( isset($_SESSION["custsucess"]) ) 
+                            { 
+
+                            $_SESSION["custsucess"];
+                            }  
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -19,15 +37,11 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
-
-
-
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
-
 
 </head>
 
@@ -38,34 +52,86 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only"> Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">Kadab's Cabs</a>
-                <a class="navbar-brand" href="book.html">Book</a>
-                <a class="navbar-brand" href="login.php">Login</a>
-                <a class="navbar-brand" href="#">DIT</a>
-                <a class="navbar-brand" href="registration.php">Register</a>
-                <a class="navbar-brand" href="#">Register</a>
+                                <a class="navbar-brand page-scroll" href="#page-top"></a>
+                                <a class="navbar-brand" href="index.php">Kadab's Cabs</a>
+                                <?php 
+                                if (! isset($_SESSION["custsucess"]) ) 
+                                {
+                                ?>
+                                 <a class="navbar-brand" href="book.php">Book</a>
+                                <?php
+                                }
+                                else
+                                 {
+                                ?>
+                                <a class="navbar-brand" href="custbook.php">Book</a>
+                                <?php
+                                 } 
+                                 ?>
+                                
+                                <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
+                                <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
+                                <a class="navbar-brand" href="registration.php">Register</a>
+                                <a class="navbar-brand page-scroll">
+                                <?php  
+                                //check for session
+                            if ( isset($_SESSION["error"]) ) 
+                            {  
+                            unset($_SESSION["error"]); 
+                            } 
+                            if ( isset($_SESSION["success"]) ) 
+                            { 
+                            echo $_SESSION["success"];
+
+                            }
+                            if ( isset($_SESSION["custsucess"]) ) 
+                            { 
+
+                            echo $_SESSION["custsucess"];
+                            }  
+?>
+</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="about.php">About</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
+                    <?php
+
+                        if(!isset($_SESSION["name"])) 
+                        { //if session not found
+                        ?>
+                        <li>
+                        <a class="page-scroll"href="dispatcherlogin.php">  Dispatcher Sign in       </a>
+                                            </li>
+                                            <li>
+
+                        <a class="page-scroll"href="customerlogin.php">  Customer Sign in       </a>
+                                            </li>
+
+
+                        <?php 
+                        }
+                        else
+                        { //if session was vaild
+                        ?>
+                         <li>
+
+                        <a class="page-scroll"href="signout.php">Sign out     </a>
+                                            </li>
+
+                        <?php
+                        }
+                        ?>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -75,72 +141,78 @@
 
     <header class="login-bg">
         <div class="header-content">
-			<img border="0" alt="Kadab"  src="img/icon.png">
+			<img border="0" alt="Kadab"  src="img/icon.png" href="index.php">
             <div class="header-content-inner">
 			<div class="header-content-inner_2"> 							<!-- Orange BOX (inner_2) -->
+			
 
 			
 			<div class="content-inner-holder">
-						<?php
-require_once("DB/DB.php");
-//get the userinput from the form 
-$firstname = $_POST['inputfirstname'];
-$lastname = $_POST['inputlastname'];
-$pickup = $_POST['inputpickup'];
-$dropoff = $_POST['inputdropoff'];
-$mobile = $_POST['inputphone'];
-$datetime = $_POST['inputdatetime'];
-$payment= $_POST['Payment'];
-$passengers= $_POST['inputpassengers'];
+				<h2>Booking</h2>
+			  <form role="form" class="form-horizontal" action="book1.php" method="post">
+				<div class="form-group">
+				<label for="inputfirstname" class="col-md-4 control-label">First Name</label>
+				<div class="col-md-8">
+				<input type="text" class="form-control" id="inputfirstname" name="inputfirstname" placeholder="Enter First Name" />
+				</div>
+				</div>
+				<div class="form-group">
+				<label for="inputlastname" class="col-md-4 control-label">Last Name</label>
+				<div class="col-md-8">
+				<input type="text" class="form-control" id="inputlastname" name="inputlastname" placeholder="Enter Last Name" />
+				</div>
+				</div>
+				<div class="form-group">
+					<label for="inputphone" class="col-md-4">Phone</label>
+					<div class="col-md-8">
+					<input type="number-local" class="form-control" id="inputphone" name="inputphone" placeholder="Enter Phone"></input>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="inputpickup" class="col-md-4">Pick Up Location</label>
+					<div class="col-md-8">
+					<input type="text" class="form-control" id="inputpickup" name="inputpickup" placeholder="Enter Pick Up Location"></input>
+					</div>
+				</div>
 
-//$passengers= $_POST['inputpassengers'];
-// To protect MySQL injection 
-$firstname= stripslashes($firstname);
-$lastname= stripslashes($lastname);
-$firstname= mysql_real_escape_string($firstname);
-$lastname= mysql_real_escape_string($lastname);
-$pickup= stripslashes($pickup);
-$dropoff= stripslashes($dropoff);
-$pickup= mysql_real_escape_string($pickup);
-$dropoff= mysql_real_escape_string($dropoff);
-$mobile= stripslashes($mobile);
-$mobile= mysql_real_escape_string($mobile);
-$datetime= stripslashes($datetime);
-$datetime= mysql_real_escape_string($datetime);
-$payment= stripslashes($payment);
-$payment= mysql_real_escape_string($payment);
-$passengers= stripslashes($passengers);
-$passengers= mysql_real_escape_string($passengers);
+				<div class="form-group">
+					<label for="inputdropoff" class="col-md-4">Drop Off Location</label>
+					<div class="col-md-8">
+					<input type="text" class="form-control" id="inputdropoff" name="inputdropoff" placeholder="Enter Drop Off Location"></input>
+					</div>
+				</div>
 
+				<div class="form-group">
+					<label for="inputdatetime" class="col-md-4">Date and Time</label>
+					<div class="col-md-8">
+					<input type="datetime-local" class="form-control" id="inputdatetime" name="inputdatetime"></input>
+					</div>
+					       
+				</div>
+				<div class="form-group">
+					<label for="inputpassengers" class="col-md-4">number of passengers</label>
+                    <div class="col-md-8">
+                    <input type="number" class="form-control" id="inputpassengers" name="inputpassengers" placeholder="No of passenger" min="1" max="7"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputpayment" class="col-md-4">Payment</label>
+					<div class="col-md-8 ">
+					<label>
+					<input type="radio" name="Payment" value="Cash" checked id="Payment"> 
+					Cash
+					</label>
+					<label>
+					<input type="radio" name="Payment" value="Card" id="Payment">
+					Card
+					</label>
 
-$book="INSERT INTO Booking (`Firstname`,`Lastname`,`Phone`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
-					 VALUES ('$firstname','$lastname','$mobile','$passengers','$pickup','$dropoff','$payment','$datetime')";
-
-	if(mysql_query($book)== TRUE)
-				{
-                    $bookinginfo=mysql_query("select * from Booking where Firstname='$firstname'
-                        AND PickupLoc='$pickup'");
-                   
-                while($row = mysql_fetch_array($bookinginfo))
-                {
-                    echo "Booking ID is :{$row[0]}  <br> ".
-                    
-                    "First Name:{$row[2]}  <br> ".
-                    "Last Name :{$row[3]}  <br> ".
-                    "Phone number:{$row[4]}  <br> ".
-                    "Passenger number :{$row[5]}  <br> ".
-                    "Pickup Location :{$row[8]}  <br> ".
-                    "Drop off Location :{$row[9]}  <br> ".
-                    "Payment type :{$row[10]}  <br> ".
-                    "Booking Time :{$row[12]}  <br> ";
-                }    
-
-				}
-				else
-				{
-					echo "something is not quite right, go back and check your booking.";
-				}mysql_close($conn);
-?>
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Submit</button>
+			  </form>
 			  </div>
 			 </div>
             </div>

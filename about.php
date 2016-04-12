@@ -58,25 +58,25 @@ session_start();
                     <span class="icon-bar"></span>
                 </button>
                                 <a class="navbar-brand page-scroll" href="#page-top"></a>
-                                <a class="navbar-brand" href="index.html">Kadab's Cabs</a>
+                                <a class="navbar-brand" href="index.php">Kadab's Cabs</a>
                                 <?php 
                                 if (! isset($_SESSION["custsucess"]) ) 
                                 {
                                 ?>
-                                 <a class="navbar-brand" href="book.html">Book</a>
+                                 <a class="navbar-brand" href="book.php">Book</a>
                                 <?php
                                 }
                                 else
                                  {
                                 ?>
-                                <a class="navbar-brand" href="custbook.html">Book</a>
+                                <a class="navbar-brand" href="custbook.php">Book</a>
                                 <?php
                                  } 
                                  ?>
                                 
-                                <a class="navbar-brand" href="customerlogin.html">Customer Login</a>
-                                <a class="navbar-brand" href="dispatcherlogin.html">Dispatcher Login</a>
-                                <a class="navbar-brand" href="registration.html">Register</a>
+                                <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
+                                <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
+                                <a class="navbar-brand" href="registration.php">Register</a>
                                 <a class="navbar-brand page-scroll">
                                 <?php  
                                 //check for session
@@ -110,11 +110,11 @@ session_start();
                         { //if session not found
                         ?>
                         <li>
-                        <a class="page-scroll"href="dispatcherlogin.html">  Dispatcher Sign in       </a>
+                        <a class="page-scroll"href="dispatcherlogin.php">  Dispatcher Sign in       </a>
                                             </li>
                                             <li>
 
-                        <a class="page-scroll"href="customerlogin.html">  customer Sign in       </a>
+                        <a class="page-scroll"href="customerlogin.php">  Customer Sign in       </a>
                                             </li>
 
 
@@ -138,6 +138,7 @@ session_start();
         </div>
         <!-- /.container-fluid -->
     </nav>
+
  <header class="login-bg">
         <div class="header-content">
             <img border="0" alt="Kadab"  src="img/icon.png">

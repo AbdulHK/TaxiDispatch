@@ -58,25 +58,25 @@ session_start();
                     <span class="icon-bar"></span>
                 </button>
 				                <a class="navbar-brand page-scroll" href="#page-top"></a>
-				                <a class="navbar-brand" href="index.html">Kadab's Cabs</a>
+				                <a class="navbar-brand" href="index.php">Kadab's Cabs</a>
                                 <?php 
                                 if (! isset($_SESSION["custsucess"]) ) 
                                 {
                                 ?>
-                                 <a class="navbar-brand" href="book.html">Book</a>
+                                 <a class="navbar-brand" href="book.php">Book</a>
                                 <?php
                                 }
                                 else
                                  {
                                 ?>
-                                <a class="navbar-brand" href="custbook.html">Book</a>
+                                <a class="navbar-brand" href="custbook.php">Book</a>
                                 <?php
                                  } 
                                  ?>
 				                
-								<a class="navbar-brand" href="customerlogin.html">Customer Login</a>
-                                <a class="navbar-brand" href="dispatcherlogin.html">Dispatcher Login</a>
-                                <a class="navbar-brand" href="registration.html">Register</a>
+								<a class="navbar-brand" href="customerlogin.php">Customer Login</a>
+                                <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
+                                <a class="navbar-brand" href="registration.php">Register</a>
                                 <a class="navbar-brand page-scroll">
                                 <?php  
                                 //check for session
@@ -110,11 +110,11 @@ session_start();
                         { //if session not found
                         ?>
                         <li>
-                        <a class="page-scroll"href="dispatcherlogin.html">  Dispatcher Sign in       </a>
+                        <a class="page-scroll"href="dispatcherlogin.php">  Dispatcher Sign in       </a>
                                             </li>
                                             <li>
 
-                        <a class="page-scroll"href="customerlogin.html">  customer Sign in       </a>
+                        <a class="page-scroll"href="customerlogin.php">  Customer Sign in       </a>
                                             </li>
 
 
@@ -144,7 +144,7 @@ session_start();
 			<img border="0" alt="Kadab"  src="img/icon.png">
             <div class="header-content-inner">
 			
-				<form role="form" class="container-fluid">
+				<form role="form" class="container-fluid" action="book.php" method="POST">
 					<div class="form-group">
 					<div class="controls controls-row row-fluid">
 						<input type="text" class="Formsize" placeholder="Pick-up" /><input type="text" class="Formsize" placeholder="Drop-Off" /><input type="datetime-local" class="Formsize" placeholder="Date" /><button href="#about" class="Btnsize btn-primary btn-xl">Book</button>
@@ -166,7 +166,7 @@ session_start();
                     <h2 class="section-heading">Need a Cab</h2>
                     <hr class="light">
                     <p class="text-faded">Kadab cabs will take you where you need to go</p>
-                    <a href="book.html" class="page-scroll btn btn-default btn-xl">Book a Cab!</a>
+                    <a href="book.php" class="page-scroll btn btn-default btn-xl">Book a Cab!</a>
                 </div>
             </div>
         </div>

@@ -143,26 +143,53 @@ session_start();
         <div class="header-content">
 			<img border="0" alt="Kadab"  src="img/icon.png">
             <div class="header-content-inner">
-			<div class="header-content-inner_2">
+			<div class="header-content-inner_2"> 							<!-- Orange BOX (inner_2) -->
+
+			
 			<div class="content-inner-holder">
-				<h2> Dispatcher Login</h2>
-			  <form role="form" action="dispatcherlogin1.php" method="POST">
-				<div class="form-group">
-				  <label for="text">ID:</label>
-				  <input type="text" class="form-control" name="inputdispatcherid" id="inputdispatcherid" placeholder="enter your Dispatcher ID here">
-				</div>
-				<div class="form-group">
-				  <label for="pwd">Password:</label>
-				  <input type="password" class="form-control" name="inputpassword"  id="inputpassword" placeholder="Enter password here">
-				
-				<button type="submit" class="btn btn-primary">Submit</button>
-			  </form>
+
+		<?php
+		require_once("DB/DB.php");
+		//get the userinput from the form 
+		$ID = $_POST['inputdispatcherid'];
+		$password = $_POST['inputpassword'];
+
+		// To protect MySQL injection 
+		$ID= stripslashes($ID);
+		$password= stripslashes($password);
+		$ID= mysql_real_escape_string($ID);
+		$password= mysql_real_escape_string($password);
+
+
+			
+
+		$login=mysql_query("select DispatcherID,Password,FirstName from Dispatcher where DispatcherID='$ID'");
+
+		while ($row =mysql_fetch_row($login))
+		{
+			if(strcmp($ID , $row[0]) == 0 && $password == $row[1] ) 
+				{
+                    $name=$row[2];
+					echo "logged in";
+                    $_SESSION["dispatcherid"]= $ID;
+					$_SESSION["name"] = $name ; 
+					$_SESSION["success"] = "Welcome, ".$name; 
+		}else 
+        {
+			echo "sorry";
+			$_SESSION["error"] = "Incorrect password OR username."; 
+
+
+		}
+			}
+		mysql_close($conn);
+		?>
+								
 			  </div>
 			 </div>
             </div>
         </div>
     </header>
-   
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

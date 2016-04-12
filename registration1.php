@@ -57,8 +57,8 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                                <a class="navbar-brand page-scroll" href="#page-top"></a>
-                                <a class="navbar-brand" href="index.php">Kadab's Cabs</a>
+				                <a class="navbar-brand page-scroll" href="#page-top"></a>
+				                <a class="navbar-brand" href="index.php">Kadab's Cabs</a>
                                 <?php 
                                 if (! isset($_SESSION["custsucess"]) ) 
                                 {
@@ -73,8 +73,8 @@ session_start();
                                 <?php
                                  } 
                                  ?>
-                                
-                                <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
+				                
+								<a class="navbar-brand" href="customerlogin.php">Customer Login</a>
                                 <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
                                 <a class="navbar-brand" href="registration.php">Register</a>
                                 <a class="navbar-brand page-scroll">
@@ -138,31 +138,61 @@ session_start();
         </div>
         <!-- /.container-fluid -->
     </nav>
-
     <header class="login-bg">
         <div class="header-content">
 			<img border="0" alt="Kadab"  src="img/icon.png">
             <div class="header-content-inner">
-			<div class="header-content-inner_2">
+			<div class="header-content-inner_2"> 							<!-- Orange BOX (inner_2) -->
+
+			
 			<div class="content-inner-holder">
-				<h2> Dispatcher Login</h2>
-			  <form role="form" action="dispatcherlogin1.php" method="POST">
-				<div class="form-group">
-				  <label for="text">ID:</label>
-				  <input type="text" class="form-control" name="inputdispatcherid" id="inputdispatcherid" placeholder="enter your Dispatcher ID here">
-				</div>
-				<div class="form-group">
-				  <label for="pwd">Password:</label>
-				  <input type="password" class="form-control" name="inputpassword"  id="inputpassword" placeholder="Enter password here">
-				
-				<button type="submit" class="btn btn-primary">Submit</button>
-			  </form>
+
+<?php
+require_once("DB/DB.php");
+//get the userinput from the form 
+$firstname = $_POST['inputfirstname'];
+$lastname = $_POST['inputlastname'];
+$pass = $_POST['inputpassword'];
+$addr1 = $_POST['inputaddress'];
+$addr2 = $_POST['inputaddress2'];
+$mobile = $_POST['inputphone'];
+$email = $_POST['inputemail'];
+
+// To protect MySQL injection 
+$pass= stripslashes($pass);
+$pass= mysql_real_escape_string($pass);
+$firstname= stripslashes($firstname);
+$lastname= stripslashes($lastname);
+$firstname= mysql_real_escape_string($firstname);
+$laatname= mysql_real_escape_string($lastname);
+$addr1= stripslashes($addr1);
+$addr2= stripslashes($addr2);
+$addr1= mysql_real_escape_string($addr1);
+$addr2= mysql_real_escape_string($addr2);
+$mobile= stripslashes($mobile);
+$mobile= mysql_real_escape_string($mobile);
+$email= stripslashes($email);
+$email= mysql_real_escape_string($email);
+//add it to the users table
+
+$cust="INSERT INTO Customer (`Password`,`FirstName`,`LastName`,`Phone`,`Address1`,`Address2`,`PayPalAcc`) VALUES ('$pass','$firstname','$lastname','$mobile','$addr1','$addr2','$email')";
+
+		if(mysql_query($cust)== TRUE);
+		{
+		echo "registration sucessfull";
+		}
+		else
+		{
+			echo" something is not quite right.";
+		}
+		mysql_close($conn);
+?>
+					
 			  </div>
 			 </div>
             </div>
         </div>
     </header>
-   
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

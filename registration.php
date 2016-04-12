@@ -1,3 +1,21 @@
+<?php
+session_start();
+                        if ( isset($_SESSION["error"]) ) 
+                            {  
+                            unset($_SESSION["error"]); 
+                            } 
+                            if ( isset($_SESSION["success"]) ) 
+                            { 
+                             $_SESSION["success"];
+
+                            }
+                            if ( isset($_SESSION["custsucess"]) ) 
+                            { 
+
+                            $_SESSION["custsucess"];
+                            }  
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,34 +52,86 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only"> Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-				<a class="navbar-brand page-scroll" href="#"></a>
-				<a class="navbar-brand" href="index.html">Kadab's Cabs</a>
-                                <a class="navbar-brand" href="book.html">Book</a>
-                                <a class="navbar-brand" href="customerlogin.html">Customer Login</a>
-                                <a class="navbar-brand" href="dispatcherlogin.html">Dispatcher Login</a>
-                                <a class="navbar-brand" href="registration.html">Register</a>
+                                <a class="navbar-brand page-scroll" href="#page-top"></a>
+                                <a class="navbar-brand" href="index.php">Kadab's Cabs</a>
+                                <?php 
+                                if (! isset($_SESSION["custsucess"]) ) 
+                                {
+                                ?>
+                                 <a class="navbar-brand" href="book.php">Book</a>
+                                <?php
+                                }
+                                else
+                                 {
+                                ?>
+                                <a class="navbar-brand" href="custbook.php">Book</a>
+                                <?php
+                                 } 
+                                 ?>
+                                
+                                <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
+                                <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
+                                <a class="navbar-brand" href="registration.php">Register</a>
+                                <a class="navbar-brand page-scroll">
+                                <?php  
+                                //check for session
+                            if ( isset($_SESSION["error"]) ) 
+                            {  
+                            unset($_SESSION["error"]); 
+                            } 
+                            if ( isset($_SESSION["success"]) ) 
+                            { 
+                            echo $_SESSION["success"];
+
+                            }
+                            if ( isset($_SESSION["custsucess"]) ) 
+                            { 
+
+                            echo $_SESSION["custsucess"];
+                            }  
+?>
+</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="about.php">About</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
+                    <?php
+
+                        if(!isset($_SESSION["name"])) 
+                        { //if session not found
+                        ?>
+                        <li>
+                        <a class="page-scroll"href="dispatcherlogin.php">  Dispatcher Sign in       </a>
+                                            </li>
+                                            <li>
+
+                        <a class="page-scroll"href="customerlogin.php">  Customer Sign in       </a>
+                                            </li>
+
+
+                        <?php 
+                        }
+                        else
+                        { //if session was vaild
+                        ?>
+                         <li>
+
+                        <a class="page-scroll"href="signout.php">Sign out     </a>
+                                            </li>
+
+                        <?php
+                        }
+                        ?>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -76,7 +146,7 @@
 			<div class="header-content-inner_2">
 			<div class="content-inner-holder">
 				<h2>Registration</h2>
-			  <form role="form" name="registration" method="post" class="form-horizontal" action="register.php">
+			  <form role="form" name="registration" method="post" class="form-horizontal" action="registration1.php">
 				<div class="form-group">
 				<label for="inputfirstname" class="col-md-4 control-label">First Name*</label>
 				<div class="col-md-8">
