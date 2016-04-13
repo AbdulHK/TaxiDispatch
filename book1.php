@@ -178,7 +178,12 @@ $payment= mysql_real_escape_string($payment);
 $passengers= stripslashes($passengers);
 $passengers= mysql_real_escape_string($passengers);
 
+             $timecheck=mysql_query("select SYSDATE()");
+                 while($time= mysql_fetch_array($timecheck))
+               {
+                if($datetime >= $time[0])
 
+                    {
 $book="INSERT INTO Booking (`Firstname`,`Lastname`,`Phone`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
 					 VALUES ('$firstname','$lastname','$mobile','$passengers','$pickup','$dropoff','$payment','$datetime')";
 
@@ -206,6 +211,16 @@ $book="INSERT INTO Booking (`Firstname`,`Lastname`,`Phone`,`Passengers`,`PickupL
 				{
 					echo "something is not quite right, go back and check your booking.";
 				}mysql_close($conn);
+
+
+
+                  
+            }
+            else
+            {
+               echo "you cannt book a taxi for the past!";
+            }
+        }
 ?>
 			  </div>
 			 </div>

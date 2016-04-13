@@ -206,18 +206,21 @@ session_start();
                 }
 
                 mysql_close($conn);
-                ?>
-              </div>
-             </div>
-            </div>
-        </div>
-    </header>
+                
+              
             }
             else
             {
                echo "you cannt book a taxi for the past!";
             }
         }
+
+?>
+        </div>
+             </div>
+            </div>
+        </div>
+    </header>
 
 				
 
