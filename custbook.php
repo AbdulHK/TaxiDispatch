@@ -149,7 +149,7 @@ session_start();
 			
 			<div class="content-inner-holder">
 				<h2>Booking</h2>
-			  <form role="form" class="form-horizontal" action="custbook1.php" method="post">
+			  <form role="form" class="form-horizontal" action="custbook1.php" method="post" name="custbook">
 				<div class="form-group">
 				<label for="inputfirstname" class="col-md-4 control-label">Customer ID</label>
 				<div class="col-md-8">
@@ -205,6 +205,7 @@ session_start();
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
+     <script src="js/validation.js"></script>  
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

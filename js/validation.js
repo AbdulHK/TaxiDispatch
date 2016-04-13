@@ -31,3 +31,33 @@ function validateEmail() {
 
     }
 }
+
+
+function isPrevDate() {
+   // alert("startDate is " + Startdate);
+           var start_date = document.forms["custbook"]["inputdatetime"].value;
+
+    if(Startdate.length != 0 && Startdate !='') {
+       // alert("Input date: "+ start_date);
+        start_date=start_date[1]+"/"+start_date[2]+"/"+start_date[0];
+       // alert("start date arrray format " + start_date);
+        var a = new Date(start_date);
+        //alert("The date is a" +a);
+        var today = new Date();
+        var day = today.getDate();
+        var mon = today.getMonth()+1;
+        var year = today.getFullYear();
+        today = (mon+"/"+day+"/"+year);
+        //alert(today);
+        var today = new Date(today);
+       // alert("Today: "+today.getTime());
+       // alert("a : "+a.getTime());
+        if(today.getTime() > a.getTime() )
+        {
+            alert("Please select Start date in range");
+            return false;
+        } else {
+            return true;
+        }
+    }
+}

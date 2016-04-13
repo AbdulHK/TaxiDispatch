@@ -172,11 +172,16 @@ session_start();
 				$passengers= stripslashes($passengers);
 				$passengers= mysql_real_escape_string($passengers);
 				
+                 $timecheck=mysql_query("select SYSDATE()");
+                 while($time= mysql_fetch_array($timecheck))
+               {
+                if($datetime >= $time[0])
 
-				$book="INSERT INTO Booking (`CustID`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
-									 VALUES ('$custid','$passengers','$pickup','$dropoff','$payment','$datetime')";
-				if(mysql_query($book)== TRUE)
-				{
+                    {
+                       $book="INSERT INTO Booking (`CustID`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
+                                     VALUES ('$custid','$passengers','$pickup','$dropoff','$payment','$datetime')";
+                if(mysql_query($book)== TRUE)
+                {
                     $bookinginfo=mysql_query("select * from Booking where CustID='$custid'
                         AND PickupLoc='$pickup'");
                     $custinfo=mysql_query("select * from Customer where CustID='$custid'");
@@ -191,22 +196,30 @@ session_start();
                     "Pickup Location :{$row[8]}  <br> ".
                     "Drop off Location :{$row[9]}  <br> ".
                     "Payment type :{$row[10]}  <br> ".
-                    "Booking Time :{$row[12]}  <br> ";
+                    "Booking Time :{$row[13]}  <br> ";
                 }    
 
-				}
-				else
-				{
-					echo "something is not quite right, go back and check your booking.";
-				}
+                }
+                else
+                {
+                    echo "something is not quite right, go back and check your booking.";
+                }
 
-				mysql_close($conn);
-				?>
-			  </div>
-			 </div>
+                mysql_close($conn);
+                ?>
+              </div>
+             </div>
             </div>
         </div>
     </header>
+            }
+            else
+            {
+               echo "you cannt book a taxi for the past!";
+            }
+        }
+
+				
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
