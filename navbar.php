@@ -72,13 +72,19 @@ session_start();
                                 <a class="navbar-brand" href="custbook.php">Book</a>
                                 <?php
                                  } 
-                                 ?>
-                        
-                <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
+                                 
+                        if(! isset($_SESSION["name"]))
+                        {
+                            ?>
+
+                                <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
                                 <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
                                 <a class="navbar-brand" href="registration.php">Register</a>
                                 <a class="navbar-brand page-scroll">
-                                <?php  
+
+
+                            <?php  
+                        }  
                                 //check for session
                             if ( isset($_SESSION["error"]) ) 
                             {  

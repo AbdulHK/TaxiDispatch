@@ -16,7 +16,10 @@ require_once("navbar.php")
 				<div class="form-group">
 				<label for="inputfirstname" class="col-md-4 control-label">Customer ID</label>
 				<div class="col-md-8">
-				<input type="text" class="form-control" id="inputcustid" name="inputcustid" placeholder="Enter your Customer ID" required/>
+				<input type="text" class="form-control" id="inputcustid" name="inputcustid" placeholder="Enter your Customer ID" required value=" <?php
+				                        $ID=$_SESSION["custid"];
+				                        echo $ID;
+ ?>"/>
 				</div>
 				</div>
 				<div class="form-group">
