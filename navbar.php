@@ -27,7 +27,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Kadab Taxi Cabs</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -70,6 +70,8 @@ session_start();
                                  {
                                 ?>
                                 <a class="navbar-brand" href="custbook.php">Book</a>
+                                <a class="navbar-brand page-scroll text center">
+
                                 <?php
                                  } 
                                  
@@ -80,7 +82,8 @@ session_start();
                                 <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
                                 <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
                                 <a class="navbar-brand" href="registration.php">Register</a>
-                                <a class="navbar-brand page-scroll">
+                                <a class="navbar-brand">
+
 
 
                             <?php  

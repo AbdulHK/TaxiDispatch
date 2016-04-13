@@ -28,28 +28,47 @@ require_once("navbar.php")
 				<div class="form-group">
 					<label for="inputphone" class="col-md-4">Phone</label>
 					<div class="col-md-8">
-					<input type="number-local" class="form-control" id="inputphone" name="inputphone" placeholder="Enter Phone"></input>
+					<input type="number-local" class="form-control" id="inputphone" name="inputphone" placeholder="Enter Phone" ></input>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="inputpickup" class="col-md-4">Pick Up Location</label>
 					<div class="col-md-8">
-					<input type="text" class="form-control" id="inputpickup" name="inputpickup" placeholder="Enter Pick Up Location"></input>
+					<input type="text" class="form-control" id="inputpickup" name="inputpickup" placeholder="Enter Pick Up Location" value="<?php
+					 if(isset($_POST['inputpickup']))
+					 {
+					 	$inputpickup=$_POST['inputpickup'];
+					 echo "$inputpickup"; 
+					}
+					 	?>">
+					 	</input>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="inputdropoff" class="col-md-4">Drop Off Location</label>
 					<div class="col-md-8">
-					<input type="text" class="form-control" id="inputdropoff" name="inputdropoff" placeholder="Enter Drop Off Location"></input>
+					<input type="text" class="form-control" id="inputdropoff" name="inputdropoff" placeholder="Enter Drop Off Location" value="<?php
+					 if(isset($_POST['inputdropoff']))
+					 {
+					 	$inputdropoff=$_POST['inputdropoff'];
+					 echo "$inputdropoff"; 
+					}
+					 	?>"></input>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="inputdatetime" class="col-md-4">Date and Time</label>
 					<div class="col-md-8">
-					<input type="datetime-local" class="form-control" id="inputdatetime" name="inputdatetime"></input>
+					<input type="datetime-local" class="form-control" id="inputdatetime" name="inputdatetime" value="<?php
+					 if(isset($_POST['inputdatetime']))
+					 {
+					 	$inputdatetime=$_POST['inputdatetime'];
+					 echo "$inputdatetime"; 
+					}
+					 	?>"></input>
 					</div>
 					       
 				</div>
