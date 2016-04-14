@@ -28,7 +28,7 @@ require_once("navbar.php")
 				<div class="form-group">
 					<label for="inputphone" class="col-md-4">Phone</label>
 					<div class="col-md-8">
-					<input type="number-local" class="form-control" id="inputphone" name="inputphone" placeholder="Enter Phone" ></input>
+					<input type="number-local" class="form-control" maxlength="10" pattern="[0-9]{10}" id="inputphone" name="inputphone" placeholder="Enter Phone" ></input>
 					</div>
 				</div>
 				
