@@ -13,7 +13,9 @@ require_once("navbar.php")
 					<a href="#about">Assign Taxi</a>
 					<a href="#about">Phone Bookings</a>
 					<a href="#about">Reports</a>
+					<a href="availablebookings.php">Available Bookings</a>
 					<a href="#about">Find Out More</a>
+
 				</div>
 			
 				<div class="header-content-inner_3" >
