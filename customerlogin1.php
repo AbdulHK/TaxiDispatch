@@ -34,8 +34,8 @@ require_once("navbar.php")
                      $name=$row[2];
                     echo "logged in";
                     $_SESSION["custid"] = $ID ; 
-                    $_SESSION["name"] = $name ; 
-                    $_SESSION["custsucess"] = "Welcome, ".$name; 
+                    $_SESSION['name'] = $name ; 
+                    $_SESSION['custsucess'] = "Welcome, ".$name; 
 		}else 
         {
 			echo "sorry";

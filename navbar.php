@@ -64,6 +64,8 @@ session_start();
                                 {
                                 ?>
                                  <a class="navbar-brand" href="book.php">Book</a>
+                                 <a class="navbar-brand page-scroll text center">
+
                                 <?php
                                 }
                                 else
@@ -75,19 +77,21 @@ session_start();
                                 <?php
                                  } 
                                  
-                        if(! isset($_SESSION["name"]))
+                        if(!isset($_SESSION["name"]))
                         {
                             ?>
 
                                 <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
                                 <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
                                 <a class="navbar-brand" href="registration.php">Register</a>
-                                <a class="navbar-brand">
+                                <a class="navbar-brand page-scroll text center">
 
 
 
                             <?php  
-                        }  
+                        }else
+                        {
+                                                     
                                 //check for session
                             if ( isset($_SESSION["error"]) ) 
                             {  
@@ -103,6 +107,7 @@ session_start();
 
                             echo $_SESSION["custsucess"];
                             }  
+                           } 
 ?>
 </a>
             </div>
