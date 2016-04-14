@@ -39,11 +39,11 @@ require_once("navbar.php")
         $email= mysql_real_escape_string($email);
         //add it to the users table
 
-        $cust="INSERT INTO Customer (`Password`,`FirstName`,`LastName`,`Phone`,`Address1`,`Address2`,`PayPalAcc`) VALUES ('$pass','$firstname','$lastname','$mobile','$addr1','$addr2','$email')";
+        $cust="INSERT INTO Customer (`Password`,`FirstName`,`LastName`,`Phone`,`Address1`,`Address2`,`Email`) VALUES ('$pass','$firstname','$lastname','$mobile','$addr1','$addr2','$email')";
 
-		if(mysql_query($cust)== TRUE);
+		if(mysql_query($cust)== TRUE)
 		{
-		echo "registration sucessfull";
+		echo "registration sucessful";
 		}
 		else
 		{

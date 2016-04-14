@@ -41,7 +41,7 @@ if ($conn->query($dispatcher) === TRUE) {
 } else {
     echo "<br>Error adding rows " . $conn->error;
 }
-$cust="INSERT INTO Customer (`Password`,`FirstName`,`LastName`,`Phone`,`Address1`,`Address2`,`PayPalAcc`) VALUES ('test123','Abdul','HK',0875347654,'Parnell','ivy ex','aih2090@gmail.com')";
+$cust="INSERT INTO Customer (`Password`,`FirstName`,`LastName`,`Phone`,`Address1`,`Address2`,`Email`) VALUES ('test123','Abdul','HK',0875347654,'Parnell','ivy ex','aih2090@gmail.com')";
 
 if ($conn->query($cust) === TRUE) {
     echo " <br>customer rows added ";

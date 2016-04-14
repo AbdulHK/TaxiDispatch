@@ -46,7 +46,7 @@ require_once("navbar.php")
                             if($datetime >= $time[0])
 
                                 {
-            $book="INSERT INTO Booking (`Firstname`,`Lastname`,`Phone`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
+            $book="INSERT INTO Booking (`FirstName`,`LastName`,`Phone`,`Passengers`,`PickupLoc`,`DropoffLoc`,`Payment`,`BookingTime`)
             					 VALUES ('$firstname','$lastname','$mobile','$passengers','$pickup','$dropoff','$payment','$datetime')";
 
             	if(mysql_query($book)== TRUE)

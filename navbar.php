@@ -67,6 +67,12 @@ session_start();
 
                                 <?php
                                 }
+                                if (isset($_SESSION["success"]) ) 
+                                {
+                                    ?>
+                                <a class="navbar-brand" href="dashboard.php">Dashboard</a>
+                                <?php
+                                }
                                 else
                                  {
                                 ?>

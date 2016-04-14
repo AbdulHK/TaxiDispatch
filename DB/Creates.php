@@ -27,7 +27,7 @@ LastName VARCHAR(50) NOT NULL,
 Phone Integer NOT NULL,
 Address1 VARCHAR(50),
 Address2 VARCHAR(50),
-PayPalAcc VARCHAR(20),
+Email VARCHAR(20),
 Deleted VARCHAR(1) DEFAULT 'N'
 )";
 
@@ -71,8 +71,8 @@ FinishTime TIME NOT NULL
 $Booking = "CREATE TABLE Booking (
 BookingID INTEGER(6) PRIMARY KEY AUTO_INCREMENT, 
 CustID INTEGER(6) ,
-Firstname VARCHAR(30),
-Lastname VARCHAR(30),
+FirstName VARCHAR(30),
+LastName VARCHAR(30),
 Phone INTEGER(10),
 Passengers INTEGER,
 TaxiID INTEGER(6),

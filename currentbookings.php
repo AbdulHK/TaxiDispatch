@@ -7,9 +7,14 @@ require_once("navbar.php")
             <div class="header-content-inner">
 			<div class="header-content-inner_2">
 
-				<h2> here is your last 5 Bookings</h2>
+				<h2> here is your latest Bookings</h2>
 			<?php
-			require_once("DB/DB.php");
+						require_once("DB/DB.php");
+
+			if(isset($_SESSION["custsucess"])) 
+                        {
+			      $ID=$_SESSION["custid"];
+
 			echo '<table border="1">'."\n"; 
 
 			echo ("<tr><td>"); 
@@ -29,35 +34,68 @@ require_once("navbar.php")
 			echo("</td><td>"); 
 			echo("Time"); 
 			echo("</td></tr>\n");  
-                if(isset($_SESSION["custsucess"])) 
-                        {
-                        $ID=$_SESSION["custid"];
-                     $bookinginfo=mysql_query("select * from Booking where CustID='$ID'
+
+			$rec_limit=5;
+		if( isset($_GET{'page'} ) )
+		 {
+            $page = $_GET{'page'} - 1;
+            $offset = $rec_limit * $page ;
+         }
+         else 
+         {
+            $page = 0;
+            $offset = 0;
+         }
+			$sql = "select * from Booking where CustID='$ID'
                      	ORDER BY BookingID DESC
-                     	Limit 5");
-                while($row = mysql_fetch_array($bookinginfo))
+                     	  	LIMIT $offset,$rec_limit"; 
+$rs_result = mysql_query($sql); //run the query
+$rec_count = mysql_num_rows($rs_result);  //count number of records
+$left_rec = $rec_count - ($page * $rec_limit);
+
+
+while($row = mysql_fetch_assoc($rs_result))
                 {
 				echo("<tr><td>"); 
-				echo($row[0]);
+				echo($row['BookingID']);
 				echo("</td><td>"); 
-				echo($row[1]); 
+				echo($row['CustID']); 
 				echo("</td><td>"); 
-				echo($row[5]); 
+				echo($row['Passengers']); 
 				echo("</td><td>"); 
-				echo($row[6]);
+				echo($row['TaxiID']);
 				echo("</td><td>"); 
-				echo($row[8]);
+				echo($row['PickupLoc']);
 				echo("</td><td>"); 
-				echo($row[9]);
+				echo($row['DropoffLoc']);
 				echo("</td><td>"); 
-				echo($row[11]);
+				echo($row['Total']);
 				echo("</td><td>"); 
-				echo($row[13]);
+				echo($row['BookingTime']);
 				echo("</td></tr>\n"); 
                 }
 
                 echo '</table>';
+                	echo "<a href='currentbookings.php?page=1'>".'|<'."</a> "; // Goto 1st page  
+
+	for ($i=1; $i<$left_rec; $i++) 
+
+              { 
+
+				echo "<a href='currentbookings.php?page=".$i."'>$i </a> ";
+			}
+			echo "<a href='currentbookings.php?page=$left_rec'> >| </a> "; // Goto last page
+
+                	
+			 	                /*
+                     $bookinginfo=mysql_query("select * from Booking where CustID='$ID'
+                     	ORDER BY BookingID DESC
+                     	Limit 5");
+                     	*/
+               
             }
+            
+
                 else
                  {
                 	echo "login first!";
