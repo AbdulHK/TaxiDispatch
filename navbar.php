@@ -64,7 +64,6 @@ session_start();
                                 {
                                 ?>
                                  <a class="navbar-brand" href="book.php">Book</a>
-                                 <a class="navbar-brand page-scroll text center">
 
                                 <?php
                                 }
@@ -72,7 +71,8 @@ session_start();
                                  {
                                 ?>
                                 <a class="navbar-brand" href="custbook.php">Book</a>
-                                <a class="navbar-brand page-scroll text center">
+                                <a class="navbar-brand" href="update.php">Edit Details</a>
+
 
                                 <?php
                                  } 
@@ -91,6 +91,10 @@ session_start();
                             <?php  
                         }else
                         {
+                            ?>
+                            <a class="navbar-brand page-scroll text center">
+                            <?php
+
                                                      
                                 //check for session
                             if ( isset($_SESSION["error"]) ) 
