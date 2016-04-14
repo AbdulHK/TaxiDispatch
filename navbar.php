@@ -72,6 +72,8 @@ session_start();
                                 ?>
                                 <a class="navbar-brand" href="custbook.php">Book</a>
                                 <a class="navbar-brand" href="update.php">Edit Details</a>
+                                <a class="navbar-brand" href="currentbookings.php">Current Bookings</a>
+
 
 
                                 <?php

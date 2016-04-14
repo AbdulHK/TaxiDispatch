@@ -7,7 +7,7 @@ require_once("navbar.php")
             <div class="header-content-inner">
 			<div class="header-content-inner_2">
 
-				<h2> Bookings</h2>
+				<h2> here is your last 5 Bookings</h2>
 			<?php
 			require_once("DB/DB.php");
 			echo '<table border="1">'."\n"; 
@@ -32,7 +32,9 @@ require_once("navbar.php")
                 if(isset($_SESSION["custsucess"])) 
                         {
                         $ID=$_SESSION["custid"];
-                     $bookinginfo=mysql_query("select * from Booking where CustID='$ID' LIMIT 5");
+                     $bookinginfo=mysql_query("select * from Booking where CustID='$ID'
+                     	ORDER BY BookingID DESC
+                     	Limit 5");
                 while($row = mysql_fetch_array($bookinginfo))
                 {
 				echo("<tr><td>"); 
