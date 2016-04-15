@@ -6,13 +6,13 @@ session_start();
                             } 
                             if ( isset($_SESSION["success"]) ) 
                             { 
-                             $_SESSION["success"];
+                             $_SESSION['success'];
 
                             }
                             if ( isset($_SESSION["custsucess"]) ) 
                             { 
 
-                            $_SESSION["custsucess"];
+                            $_SESSION['custsucess'];
                             }  
 
 ?>
@@ -64,16 +64,9 @@ session_start();
                                 {
                                 ?>
                                  <a class="navbar-brand" href="book.php">Book</a>
-
-                                <?php
+                                <?php 
                                 }
-                                if (isset($_SESSION["success"]) ) 
-                                {
-                                    ?>
-                                <a class="navbar-brand" href="dashboard.php">Dashboard</a>
-                                <?php
-                                }
-                                else
+                                 else
                                  {
                                 ?>
                                 <a class="navbar-brand" href="custbook.php">Book</a>
@@ -85,6 +78,14 @@ session_start();
                                 <?php
                                  } 
                                  
+                                
+                                if (isset($_SESSION["success"]) ) 
+                                {
+                                    ?>
+                                <a class="navbar-brand" href="dashboard.php">Dashboard</a>
+                                <?php
+                                }
+                                
                         if(!isset($_SESSION["name"]))
                         {
                             ?>

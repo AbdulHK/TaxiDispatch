@@ -11,6 +11,8 @@ require_once("navbar.php")
 			
 			<div class="content-inner-holder">
 						<?php
+                        if(isset($_SESSION['custsucess']))
+                        {
 						require_once("DB/DB.php");
 				//get the userinput from the form 
 				$custid = $_POST['inputcustid'];
@@ -77,6 +79,11 @@ require_once("navbar.php")
                echo "you cannt book a taxi for the past!";
             }
         }
+    }
+    else 
+    {
+        echo "you are not logged in.";
+    }
 
 ?>
         </div>

@@ -11,6 +11,10 @@ require_once("navbar.php")
 
 			
 			<div class="content-inner-holder">
+			<?php
+			if(isset($_SESSION['custsucess']))
+                        {
+                        	?>
 				<h2>Booking</h2>
 			  <form role="form" class="form-horizontal" action="custbook1.php" method="post" name="custbook">
 				<div class="form-group">
@@ -65,6 +69,13 @@ require_once("navbar.php")
 			  </div>
 			 </div>
             </div>
+            <?php
+        }
+            else
+            {
+             echo "login first.";
+            }
+            ?>
         </div>
     </header>
 

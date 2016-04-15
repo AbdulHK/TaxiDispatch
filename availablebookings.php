@@ -9,11 +9,11 @@ require_once("navbar.php")
 				<!--<div class="navbar"></div>-->
 
 				<div id="menu-left">
-					<a href="darshboard.php">Dashboard</a>
-					<a href="#about">Assign Taxi</a>
-					<a href="#about">Phone Bookings</a>
+					<a href="dashboard.php">Dashboard</a>
+					<a href="AssignTaxi.php">Assign Taxi</a>
+					<a href="book.php">Phone Bookings</a>
 					<a href="#about">Reports</a>
-					<a href="#about">Find Out More</a>
+					<a href="availablebookings.php">All bookings</a>
 				</div>
 			
 				<div class="header-content-inner_3" >
@@ -118,7 +118,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page']))
 		echo '<td>' . mysql_result($result, $i, 'BookingTime') . '</td> <td>';
 				?>
 				<form method="post" action="AssignTaxi.php">
-	        <button class="btn btn-primary"type="submit" name="Assign Taxi" id="AssignTaxi" value=" <?php echo "$row[BookingID]"?>">AssignTaxi
+	        <button class="btn btn-primary"type="submit" name="bookingid" id="bookingid" value=" <?php echo mysql_result($result, $i, 'BookingID');?>">AssignTaxi
 	        </button>
 	        	</form>	
 	        	<?php	        	

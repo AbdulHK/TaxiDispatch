@@ -6,9 +6,23 @@ require_once("navbar.php")
         <div class="header-content">
 			<img border="0" alt="Kadab"  src="img/icon.png" href="index.php">
             <div class="header-content-inner">
+             <?php
+			if(isset($_SESSION['success']))
+			{
+				?>
+				<div id="menu-left">
+					<a href="dashboard.php">Dashboard</a>
+					<a href="AssignTaxi.php">Assign Taxi</a>
+					<a href="book.php">Phone Bookings</a>
+					<a href="#about">Reports</a>
+					<a href="#about">Find Out More</a>
+				</div>
+				<?php
+}
+?>
 			<div class="header-content-inner_2"> 							<!-- Orange BOX (inner_2) -->
 			
-
+				
 			
 			<div class="content-inner-holder">
 				<h2>Booking</h2>

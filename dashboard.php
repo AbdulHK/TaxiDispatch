@@ -7,26 +7,25 @@ require_once("navbar.php")
 		
 			<div class="header-content-inner_dash">
 				<!--<div class="navbar"></div>-->
+				<?php 
+				if ( isset($_SESSION["success"]) ) 
+                            { 
 
+                            ?>
 				<div id="menu-left">
-					<a href="darshboard.php">Dashboard</a>
-					<a href="#about">Assign Taxi</a>
-					<a href="#about">Phone Bookings</a>
+					<a href="dashboard.php">Dashboard</a>
+					<a href="AssignTaxi.php">Assign Taxi</a>
+					<a href="book.php">Phone Bookings</a>
 					<a href="#about">Reports</a>
-					<a href="availablebookings.php">Available Bookings</a>
-					<a href="#about">Find Out More</a>
-
+					<a href="availablebookings.php">All bookings</a>
 				</div>
 			
 				<div class="header-content-inner_3" >
 				
-				  <h2>Bordered Table</h2>
 					  <p>Bookings</p>            
 					  <table class="table table-bordered" width="600" border="1" style="font-size:12px;">
 					  <?php
 					  		require_once("DB/DB.php");
-
-
 					echo ("<tr><td>"); 
 					echo("Booking ID");
 					echo("</td><td>"); 
@@ -50,7 +49,8 @@ require_once("navbar.php")
 					from Booking
                     LEFT JOIN Customer 
                     ON Customer.CustID=Booking.CustID
-                    LIMIT 5";
+                    ORDER BY BookingID DESC
+                    LIMIT 4";
 
 
              $rs_result = mysql_query($sql); //run the query
@@ -62,7 +62,7 @@ require_once("navbar.php")
 				echo($row['BookingID']);
 				echo("</td><td>");
 				if($row['CustID'] == NULL)
-				{
+				{ 	
 					$sql1="select FirstName,LastName,Phone from Booking
 					where BookingID='$row[BookingID]'";
 					$rs_result1 = mysql_query($sql1); //run the query
@@ -96,39 +96,73 @@ require_once("navbar.php")
 				echo("</td><td>"); 
 				?>
 				<form method="post" action="AssignTaxi.php">
-	        <button class="btn btn-primary"type="submit" name="Assign Taxi" id="AssignTaxi" value=" <?php echo "$row[BookingID]"?>">AssignTaxi
+	        <button class="btn btn-primary"type="submit" name="bookingid" id="bookingid"  value=" <?php echo "$row[BookingID]"?>">Assign Taxi
 	        </button>
 	        	</form>	
-	        	<?php	        	
-				echo("</td></tr>\n"); 
+	        		<?php	        	
+					echo("</td></tr>\n"); 
                 }         	 		
-                echo '</table>';
+                	echo '</table>';
 
 			?> 
 					   <p>Available Taxi's</p>
 					  <table class="table table-bordered" width="600">
-						<?php
+			<?php
 					echo ("<tr><td>"); 
-					echo("Booking ID");
+					echo("Taxi ID");
 					echo("</td><td>"); 
-					echo("Customer ID"); 
+					echo("First Name"); 
 					echo("</td><td>"); 
-					echo("Passengers"); 
+					echo("Last Name"); 
 					echo("</td><td>"); 
-					echo("PickupLoc");
+					echo("Phone");
 					echo("</td><td>"); 
-					echo("Payment");
+					echo("License");
 					echo("</td><td>"); 
-					echo("Dropoff");
+					echo("Car Size");
 					echo("</td><td>"); 
-					echo("Time"); 
+					echo("Start Time"); 
 					echo("</td><td>"); 
-					echo("BookingTime"); 
-					echo("</td></tr>\n"); 
-					echo '</table>';
+					echo("Finish Time"); 
+					
+		$sql1 = "select * from Taxi
+			WHERE Deleted ='N'
+			ORDER BY TaxiID DESC
+			LIMIT 5 ";
 
-?>					  
-<div class="navbar"></div>
+
+             $rs_result1 = mysql_query($sql1); //run the query
+
+
+            while($row = mysql_fetch_assoc($rs_result1))
+                {
+				echo("<tr><td>"); 
+				echo($row['TaxiID']);
+				echo("</td><td>");
+				echo($row['FirstName']); 
+				echo("</td><td>"); 
+				echo($row['LastName']); 
+				echo("</td><td>"); 
+				echo($row['PhoneNo']);
+				echo("</td><td>"); 
+				echo($row['Licenseplate']);
+				echo("</td><td>"); 
+				echo($row['carsize']);
+				echo("</td><td>"); 
+				echo($row['StartTime']);
+				echo("</td><td>"); 
+				echo($row['FinishTime']);
+				echo("</td></tr>\n"); 
+
+				} 
+					echo '</table>';
+  }
+  else
+  {
+  	echo "only dispatchers can view this page";
+  }
+
+			  ?>
 				  </div>
 			  </div>
             </div>
