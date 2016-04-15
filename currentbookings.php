@@ -48,7 +48,7 @@ require_once("navbar.php")
          }
 			$sql = "select * from Booking where CustID='$ID'
                      	ORDER BY BookingID DESC
-                     	  	LIMIT $offset,$rec_limit"; 
+                     	LIMIT $offset,$rec_limit"; 
 $rs_result = mysql_query($sql); //run the query
 $rec_count = mysql_num_rows($rs_result);  //count number of records
 $left_rec = $rec_count - ($page * $rec_limit);
@@ -84,14 +84,7 @@ while($row = mysql_fetch_assoc($rs_result))
 
 				echo "<a href='currentbookings.php?page=".$i."'>$i </a> ";
 			}
-			echo "<a href='currentbookings.php?page=$left_rec'> >| </a> "; // Goto last page
-
-                	
-			 	                /*
-                     $bookinginfo=mysql_query("select * from Booking where CustID='$ID'
-                     	ORDER BY BookingID DESC
-                     	Limit 5");
-                     	*/
+			echo "<a href='currentbookings.php?page=$left_rec'> >| </a> ";
                
             }
             

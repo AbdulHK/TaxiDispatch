@@ -41,28 +41,50 @@ require_once("navbar.php")
 		}
  			if(isset($_POST['bookingid']))
 	{
- 			$sql="select Booking.*,Customer.* from booking
- 			LEFT join Customer
- 			On Booking.CustID=Customer.CustID
- 			 where BookingID='$ID'
- 			 ORDER BY BookingID DESC";
+ 			$sql="select Booking.*,Customer.*
+ 			from Booking
+ 			LEFT JOIN Customer
+ 			ON Customer.CustID=Booking.CustID
+ 			where BookingID='$ID'";
+
+ 			$sql1="select FirstName,LastName,Phone from Booking
+			where BookingID='$ID'";
+			$rs_result1 = mysql_query($sql1); //run the query
  			$rs_result = mysql_query($sql); //run the query
  			 					echo '<table>';
 
  			while($row = mysql_fetch_array($rs_result))
 
 					 {
-					 echo ("<tr>"); 
-
 			echo '<td>' . "Customer Name: "."" . '</td>';
+
+			if(($row['CustID']) == NULL)
+			{
+			
+			while($row1 = mysql_fetch_assoc($rs_result1))
+					 {
+					 	
+	echo'<td>' . ($row1['FirstName']) ." " .($row1['LastName']) .'</td>';
+						echo ("</tr>");
+			echo '<td>' . "Customer Phone No: "."" . '</td>';
+
+			echo '<td>' . ($row1['Phone']) . '</td>';
+						echo ("</tr>");
+
+               		 }
+               }		 
+
+else 	{
 			echo'<td>' . ($row['FirstName']) ." " .($row['LastName']) .'</td>';
 			echo ("</tr>");
 			
 			echo '<td>' . "Customer Phone No: "."" . '</td>';
 			echo'<td>' . ($row['Phone']).'</td>';
+		}
 			echo ("</tr>");
 			echo '<td>' . "No. of Passengers : "."" . '</td>';
 			echo'<td>' . ($row['Passengers']).'</td>';
+			$_SESSION["psngrs"]=($row['Passengers']);
 			echo ("</tr>");
 			echo '<td>' . "Pick up Location: "."" . '</td>';
 			echo'<td>' . ($row['PickupLoc']).'</td>';
