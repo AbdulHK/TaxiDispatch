@@ -1,5 +1,5 @@
 <?php
-require_once("navbar.php");
+require_once("navbar.php")
 ?>
     <header class="login-bg">
         <div class="header-content">
@@ -18,41 +18,36 @@ require_once("navbar.php");
 			
 				<div class="header-content-inner_3" >
 				<h2>Booking</h2>
-
+						<form  method="post" action="AssignTaxi.php">
 
 			  
 				<?php
 				require_once("DB/DB.php");
-
 				echo '<div class="header-content-inner_2" >';
 				echo '<div class="content-inner-holder">';
 
 				if(isset($_POST['bookingid']))
-
-									 { 
-									echo '<form  method="post" action="AssignTaxi1.php">';
-
-									 	$bookingid=$_POST['bookingid'];
-				                        echo "Booking ID: " ."$bookingid";
-
+									 {
+				                        $_SESSION["Booking"]=$_POST['bookingid'];
+				                        $ID=$_POST['bookingid'];
+				                        echo "Booking ID: " .$_SESSION["Booking"];
 				                    }
 				                    else
 				                    {
 				                    	?>
-				                   <form  method="post" action="AssignTaxi.php">
-
 		<input type="text" class="form-control"  id="bookingid" name="bookingid" placeholder="Enter booking id" ></input>
-
-						</form>
-
+		</form>
 		<?php
 		}
  			if(isset($_POST['bookingid']))
- 			{
- 			$sql="select * from booking where BookingID='$bookingid'";
+	{
+ 			$sql="select Booking.*,Customer.* from booking
+ 			LEFT join Customer
+ 			On Booking.CustID=Customer.CustID
+ 			 where BookingID='$ID'
+ 			 ORDER BY BookingID DESC";
  			$rs_result = mysql_query($sql); //run the query
-
- 			 		echo '<table>';
+ 			 					echo '<table>';
 
  			while($row = mysql_fetch_array($rs_result))
 
@@ -83,8 +78,10 @@ require_once("navbar.php");
 				if( $row['Total'] == NULL)
 			{
 			?>
+			<form  method="post" action="AssignTaxi1.php">
 
 		<input type="text" class="form-control" id="total" name="total" placeholder="Enter total" ></input>
+
 		<?php
 			}
 		else
@@ -100,8 +97,8 @@ require_once("navbar.php");
 			{
 			?>
 
-
 		<input type="text" class="form-control" id="taxiid" name="taxiid" placeholder="Enter Taxi ID" ></input>
+
 		<?php
 			}
 		else
@@ -116,13 +113,15 @@ require_once("navbar.php");
 					 }
 					}
 					 echo '</table>';
-					 echo '</div>';
-					echo '</div>';
 		echo '<button type="submit" class="btn btn-primary">Submit</button>';
 					echo '</form>';
-					
+
+					echo '</div>';
+					echo '</div>';
 				
 				?>
+				</form>
+
 			  </div>
 
 			 </div>
@@ -130,6 +129,7 @@ require_once("navbar.php");
           </div>
 
 			
+
 
 
     </header>

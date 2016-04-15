@@ -42,7 +42,7 @@ require_once("navbar.php")
 					echo("Assign Taxi"); 
 					echo("</td></tr>\n"); 
 		
-			$sql = "select Booking.*,customer.*
+			$sql = "select Booking.*,Customer.*
 					from Booking
                     LEFT JOIN Customer 
                     ON Customer.CustID=Booking.CustID
