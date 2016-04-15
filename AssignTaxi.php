@@ -28,9 +28,9 @@ require_once("navbar.php");
 				echo '<div class="content-inner-holder">';
 
 				if(isset($_POST['bookingid']))
-									                 echo'  <form  method="post" action="AssignTaxi.php">';
 
 									 { 
+									echo '<form  method="post" action="AssignTaxi1.php">';
 
 									 	$bookingid=$_POST['bookingid'];
 				                        echo "Booking ID: " ."$bookingid";
@@ -123,7 +123,6 @@ require_once("navbar.php");
 					
 				
 				?>
-				</form>
 			  </div>
 
 			 </div>

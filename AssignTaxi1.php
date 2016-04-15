@@ -4,7 +4,7 @@
 		require_once("DB/DB.php");
 
 
- 		$booking= $_GET["bookingid"];
+ 		$booking= $_POST['bookingid'];
 		$total = $_POST["total"];
         $TaxiID = $_POST["taxiid"];
         $ID=$_SESSION["dispatcherid"];
