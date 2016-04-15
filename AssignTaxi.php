@@ -28,14 +28,12 @@ require_once("navbar.php");
 				echo '<div class="content-inner-holder">';
 
 				if(isset($_POST['bookingid']))
+									                 echo'  <form  method="post" action="AssignTaxi.php">';
 
 									 { 
-									 echo '<form  method="post" action="AssignTaxi1.php">';
-									 	echo'<p  id="bookingid" name="bookingid" >';
 
 									 	$bookingid=$_POST['bookingid'];
 				                        echo "Booking ID: " ."$bookingid";
-				                        echo'</p>';
 
 				                    }
 				                    else
@@ -50,13 +48,11 @@ require_once("navbar.php");
 		<?php
 		}
  			if(isset($_POST['bookingid']))
-	{		
-							
+ 			{
  			$sql="select * from booking where BookingID='$bookingid'";
  			$rs_result = mysql_query($sql); //run the query
 
  			 		echo '<table>';
- 			 echo '<form  method="post" action="AssignTaxi1.php">';
 
  			while($row = mysql_fetch_array($rs_result))
 
