@@ -22,6 +22,11 @@
 <?php
 				echo '<div class="header-content-inner_2" >';
 				echo '<div class="content-inner-holder">';
+
+				if ( isset($_SESSION["success"]) ) 
+                            { 
+
+                            
  		$ID= $_SESSION["Booking"];
 		$total = $_POST['total'];
         $TaxiID = $_POST['taxiid'];
@@ -56,4 +61,9 @@
 			echo '</div>';
 			echo '</div>';
 			mysql_close($conn);
+		}
+		else
+		{
+			echo "only a dispatcher is allowed here";
+		}
 				 ?>

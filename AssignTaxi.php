@@ -22,6 +22,10 @@ require_once("navbar.php")
 
 			  
 				<?php
+				if ( isset($_SESSION["success"]) ) 
+                            { 
+
+                            
 				require_once("DB/DB.php");
 				echo '<div class="header-content-inner_2" >';
 				echo '<div class="content-inner-holder">';
@@ -94,7 +98,7 @@ else 	{
 			echo'<td>' . ($row['PickupLoc']).'</td>';
 			echo ("</tr>");
 			echo '<td>' . "Drop Off Location: "."" . '</td>';
-			echo'<td>' . ($row['Phone']).'</td>';
+			echo'<td>' . ($row['DropoffLoc']).'</td>';
 			echo ("</tr>");
 			echo '<td>' . "Payment type: "."" . '</td>';
 			echo'<td>' . ($row['Payment']).'</td>';
@@ -144,7 +148,11 @@ else 	{
 
 					echo '</div>';
 					echo '</div>';
-				
+				}
+				else
+				{
+					echo "only dispatchers allowed here";
+				}
 				?>
 				</form>
 

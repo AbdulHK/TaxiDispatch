@@ -17,10 +17,14 @@ require_once("navbar.php")
 					<a href="availablebookings.php">All bookings</a>
 				</div>
 				<div class="header-content-inner_3" >
-					
-					
-				  <h2>Print Reports</h2>
+				 <h2>Print Reports</h2>
 				
+					<?php
+						if ( isset($_SESSION["success"]) ) 
+                            {
+                            ?> 
+					
+				 
 					<button id="myButton" class="btn btn-primary btn-block" >Current Empoyees</button>
 
 						<script type="text/javascript">
@@ -33,7 +37,7 @@ require_once("navbar.php")
 
 						<script type="text/javascript">
 						document.getElementById("myButton2").onclick = function () {
-						location.href = "index.php";
+						window.open('dispatcherreport.php', '_blank');
 						};
 						</script>
 					
@@ -54,9 +58,15 @@ require_once("navbar.php")
 						</script>
 						
 
-						
-				
+
 				</div>
+					<?php	
+				}
+				else
+				{
+					echo" only dispatchers are allowed here!";
+				}
+				?>
    
 
     <!-- jQuery -->

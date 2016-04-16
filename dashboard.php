@@ -7,22 +7,23 @@ require_once("navbar.php")
 		
 			<div class="header-content-inner_dash">
 				<!--<div class="navbar"></div>-->
-				<?php 
-				if ( isset($_SESSION["success"]) ) 
-                            { 
-
-                            ?>
+				
 				<div id="menu-left">
 					<a href="dashboard.php">Dashboard</a>
 					<a href="AssignTaxi.php">Assign Taxi</a>
 					<a href="book.php">Phone Bookings</a>
-					<a href="#about">Reports</a>
+					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
 				</div>
 			
 				<div class="header-content-inner_3" >
 				
-					  <p>Bookings</p>            
+					  <p>Bookings</p>
+					  <?php 
+				if ( isset($_SESSION["success"]) ) 
+                            { 
+
+                            ?>            
 					  <table class="table table-bordered" width="600" border="1" style="font-size:12px;">
 					  <?php
 					  		require_once("DB/DB.php");

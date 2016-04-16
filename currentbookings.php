@@ -91,7 +91,7 @@ while($row = mysql_fetch_assoc($rs_result))
 
                 else
                  {
-                	echo "login first!";
+                	echo "login as a customer first!";
                 }
 			?>
 						  

@@ -12,7 +12,7 @@ require_once("navbar.php")
 					<a href="dashboard.php">Dashboard</a>
 					<a href="AssignTaxi.php">Assign Taxi</a>
 					<a href="book.php">Phone Bookings</a>
-					<a href="#about">Reports</a>
+					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
 				</div>
 			
@@ -21,6 +21,10 @@ require_once("navbar.php")
 					  <p>Bookings</p>            
 					  <table class="table table-bordered" width="600" border="1" style="font-size:12px;">
 					  <?php
+					  if ( isset($_SESSION["success"]) ) 
+                            { 
+
+                            
 					  require_once("DB/DB.php");
 					echo ("<tr><td>"); 
 					echo("Booking ID");
@@ -135,9 +139,14 @@ if (isset($_GET['page']) && is_numeric($_GET['page']))
 
 				echo "<a href='availablebookings.php?page=".$i."'>$i </a> ";
 			}
-			echo "<a href='availablebookings.php?page=$total_pages'> >| </a> "
-			?> 
-<div class="navbar"></div>
+			echo "<a href='availablebookings.php?page=$total_pages'> >| </a> ";
+		}
+		else
+		{
+			echo"only a dispatcher allowed here!";
+		}
+					?> 
+
 				  </div>
 			  </div>
             </div>
