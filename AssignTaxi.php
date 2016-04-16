@@ -12,12 +12,12 @@ require_once("navbar.php")
 					<a href="dashboard.php">Dashboard</a>
 					<a href="AssignTaxi.php">Assign Taxi</a>
 					<a href="book.php">Phone Bookings</a>
-					<a href="#about">Reports</a>
+					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
 				</div>
 			
 				<div class="header-content-inner_3" >
-				<h2>Booking</h2>
+				<h2>AssignTaxi</h2>
 						<form  method="post" action="AssignTaxi.php">
 
 			  
@@ -28,9 +28,11 @@ require_once("navbar.php")
 
 				if(isset($_POST['bookingid']))
 									 {
+
 				                        $_SESSION["Booking"]=$_POST['bookingid'];
 				                        $ID=$_POST['bookingid'];
 				                        echo "Booking ID: " .$_SESSION["Booking"];
+
 				                    }
 				                    else
 				                    {
@@ -41,6 +43,8 @@ require_once("navbar.php")
 		}
  			if(isset($_POST['bookingid']))
 	{
+						                        	echo '	</form>';
+
  			$sql="select Booking.*,Customer.*
  			from Booking
  			LEFT JOIN Customer

@@ -8,16 +8,14 @@ require_once("navbar.php")
 			<div class="header-content-inner_dash">
 				<!--<div class="navbar"></div>-->
 
+				
 				<div id="menu-left">
-					<a href="darshboard.php">Dashboard</a>
-					<a href="#about">Assign Taxi</a>
-					<a href="#about">Phone Bookings</a>
-					<a href="#about">Reports</a>
-					<a href="availablebookings.php">Available Bookings</a>
-					<a href="#about">Find Out More</a>
-
+					<a href="dashboard.php">Dashboard</a>
+					<a href="AssignTaxi.php">Assign Taxi</a>
+					<a href="book.php">Phone Bookings</a>
+					<a href="reports.php">Reports</a>
+					<a href="availablebookings.php">All bookings</a>
 				</div>
-			
 				<div class="header-content-inner_3" >
 					
 					
