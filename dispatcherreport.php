@@ -67,9 +67,18 @@ session_start();
 
  
 		$sql = "select * from Booking where DispatcherID='$dID'";
-
+		$sql1="select sum(Total) as sum from Booking where DispatcherID='$dID'";
 
              $rs_result = mysql_query($sql); //run the query
+             $total=mysql_num_rows($rs_result);
+
+             $sum1 = mysql_query($sql1); //run the query
+              $sum2 = mysql_fetch_assoc($sum1);
+              $sum = $sum2['sum'];
+
+
+
+
 
 
             while($row = mysql_fetch_assoc($rs_result))
@@ -90,12 +99,17 @@ session_start();
 				echo($row['Passengers']);
 				echo("</td></tr>");
 				}
-			
 				
-		 
-             
-           
-            
+								echo("<td>"); 
+
+		 echo "ID : " . $dID;
+				echo("</td><td>");
+
+		echo "total money made" . $sum;
+				echo("</td><td>");
+
+		echo "\t \t \tTotal bookings made: " . $total;
+     					
 			?>
 			</tbody>
         </table>
