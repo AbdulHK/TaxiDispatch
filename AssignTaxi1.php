@@ -32,7 +32,9 @@
         $TaxiID = $_POST['taxiid'];
         $dID=$_SESSION["dispatcherid"];
         $psngr=$_SESSION["psngrs"];
-        $sql1="select carsize from Taxi where TaxiID='$TaxiID'";
+        $sql1="select carsize from Taxi where TaxiID='$TaxiID' and Stats='Available'";
+        $sql2="Update Taxi Set Stats='Busy' where TaxiID='$TaxiID'";
+       // $sql3"select Stats from Taxi where TaxiID='$TaxiID' and stat";
 
 		$sql="UPDATE Booking Set Total='$total',TaxiID='$TaxiID',DispatcherID='$dID'
 			Where BookingID='$ID'";
@@ -42,6 +44,8 @@
 			{
 				if(mysql_query($sql)== TRUE)
 				{
+				mysql_query($sql2); //run the query
+
 				echo "update sucessful";
 				}
 				else
@@ -51,7 +55,7 @@
 			}
 			else
 			{
-				echo "taxi wont fit.";
+				echo "taxi wont fit, or the taxi is Busy.";
 				
 			}
 						echo '</div>';

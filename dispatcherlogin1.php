@@ -45,6 +45,7 @@ require_once("navbar.php")
 		}
 			}
 		mysql_close($conn);
+
 		?>
 								
 			  </div>

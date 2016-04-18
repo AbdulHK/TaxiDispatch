@@ -47,6 +47,7 @@ Licenseplate VARCHAR(20) NOT NUlL UNIQUE,
 carsize INTEGER NOT NULL,
 StartTime TIME  NOT NULL,
 FinishTime TIME NOT NULL,
+Stats VARCHAR(50) NOT NULL,
 Deleted VARCHAR(1) DEFAULT 'N'
 )";
 if ($conn->query($Taxi) === TRUE) {
@@ -93,18 +94,6 @@ FOREIGN KEY (DispatcherID) REFERENCES Dispatcher(DispatcherID)
 } else {
     echo "<br>Error creating table: " . $conn->error;
 }
-$Status = "CREATE TABLE Status (
-DispatcherID INTEGER(6) PRIMARY KEY, 
-TaxiID INTEGER(6),
-Status VARCHAR(20),
-QueueNo INTEGER,
-FOREIGN KEY (TaxiID) REFERENCES Taxi(TaxiID),
-FOREIGN KEY (DispatcherID) REFERENCES Dispatcher(DispatcherID)
- )";
- if ($conn->query($Status) === TRUE) {
-    echo "<br>Table Status created successfully";
-} else {
-    echo "<br>Error creating table: " . $conn->error;
-}
+
 $conn->close();
 ?>

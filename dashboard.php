@@ -124,10 +124,12 @@ require_once("navbar.php")
 					echo("</td><td>"); 
 					echo("Start Time"); 
 					echo("</td><td>"); 
-					echo("Finish Time"); 
+					echo("Finish Time");
+					echo("</td><td>"); 
+					echo("Update");  
 					
 		$sql1 = "select * from Taxi
-			WHERE Deleted ='N'
+			 Where Stats='Available'
 			ORDER BY TaxiID DESC
 			LIMIT 5 ";
 
@@ -151,12 +153,23 @@ require_once("navbar.php")
 				echo($row['carsize']);
 				echo("</td><td>"); 
 				echo($row['StartTime']);
+				echo("</td><td>");
+				echo($row['StartTime']);
 				echo("</td><td>"); 
-				echo($row['FinishTime']);
-				echo("</td></tr>\n"); 
+				
 
-				} 
-					echo '</table>';
+				?>
+
+				<form method="post" action="updatestats.php">
+	        <button class="btn btn-primary"type="submit" name="stat" id="stat"  value=" <?php echo "$row[Stats]"?>">Update Taxi
+	        </button>
+	        	</form>	
+	        		<?php	        	
+					echo("</td></tr>\n"); 
+                }         	 		
+                	echo '</table>';
+
+			
   }
   else
   {
