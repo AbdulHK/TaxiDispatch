@@ -7,7 +7,7 @@ require_once("navbar.php")
 		
 			<div class="header-content-inner_dash">
 				<!--<div class="navbar"></div>-->
-
+				
 				<div id="menu-left">
 					<a href="dashboard.php">Dashboard</a>
 					<a href="AssignTaxi.php">Assign Taxi</a>
@@ -17,91 +17,104 @@ require_once("navbar.php")
 				</div>
 			
 				<div class="header-content-inner_3" >
-				<h2>AssignTaxi</h2>
-						<form  method="post" action="AssignTaxi.php">
-
-			  
-				<?php
+				
+					
+					  <?php 
 				if ( isset($_SESSION["success"]) ) 
                             { 
 
-                            
-				require_once("DB/DB.php");
-				echo '<div class="header-content-inner_2" >';
-				echo '<div class="content-inner-holder">';
-
-				if(isset($_POST['bookingid']))
-									 {
-
-				                        $_SESSION["Booking"]=$_POST['bookingid'];
-				                        $ID=$_POST['bookingid'];
-				                        echo "Booking ID: " .$_SESSION[""];
-
-				                    }
-				                    else
-				                    {
-				                    	?>
-		<input type="text" class="form-control"  id="stat" name="stat" placeholder="Enter booking id" ></input>
-		</form>
-		<?php
-		}
- 			if(isset($_POST['stat']))
-	{
-						                        	echo '	</form>';
-
- 			$sql="select Booking.*,Customer.*
- 			from Booking
- 			LEFT JOIN Customer
- 			ON Customer.CustID=Booking.CustID
- 			where BookingID='$ID'";
-
- 			
- 			while($row = mysql_fetch_array($rs_result))
-			{
-			echo '<td>' . "Taxi Name: "."" . '</td>';
-
+                            ?>
+					   <p>Occupied Taxis</p>
+					  <table class="table table-bordered" width="600">
+					  
+					  
+			<?php
 			
-			echo'<td>' . ($row['FirstName']) ." " .($row['LastName']) .'</td>';
-			echo ("</tr>");
-			
-			echo '<td>' . "Customer Phone No: "."" . '</td>';
-			echo'<td>' . ($row['Phone']).'</td>';
-			}
-		else
-			{
-			echo ($row['TaxiID']).'</td>';
-			}
+					require_once("DB/DB.php");
+					
+					echo ("<tr><td>"); 
+					echo("Taxi ID");
+					echo("</td><td>"); 
+					echo("First Name"); 
+					echo("</td><td>"); 
+					echo("Last Name"); 
+					echo("</td><td>"); 
+					echo("Phone");
+					echo("</td><td>"); 
+					echo("License");
+					echo("</td><td>"); 
+					echo("Car Size");
+					echo("</td><td>"); 
+					echo("Start Time"); 
+					echo("</td><td>"); 
+					echo("Finish Time");
+					echo("</td><td>"); 
+					echo("Update");  
+					
+		$sql1 = "select * from Taxi
+			 Where Stats='Busy'
+			ORDER BY TaxiID DESC
+			LIMIT 5 ";
 
-			echo ("</tr>");
-			echo '<td>' . "BookingTime: "."" . '</td>';
-			echo'<td>' . ($row['BookingTime']).'</td>';
 
-					 }
-					}
-					 echo '</table>';
-		echo '<button type="submit" class="btn btn-primary">Submit</button>';
-					echo '</form>';
+             $rs_result1 = mysql_query($sql1); //run the query
 
-					echo '</div>';
-					echo '</div>';
-				}
-				else
-				{
-					echo "only dispatchers allowed here";
-				}
+
+            while($row = mysql_fetch_assoc($rs_result1))
+                {
+				echo("<tr><td>"); 
+				echo($row['TaxiID']);
+				echo("</td><td>");
+				echo($row['FirstName']); 
+				echo("</td><td>"); 
+				echo($row['LastName']); 
+				echo("</td><td>"); 
+				echo($row['PhoneNo']);
+				echo("</td><td>"); 
+				echo($row['Licenseplate']);
+				echo("</td><td>"); 
+				echo($row['carsize']);
+				echo("</td><td>"); 
+				echo($row['StartTime']);
+				echo("</td><td>");
+				echo($row['StartTime']);
+				echo("</td><td>"); 
+				
+
 				?>
-				</form>
 
-			  </div>
+				<form method="post" action="updatestats.php">
+	        <button href="#edit-modal" type="button" data-toggle="modal"
+                                    class="btn btn-primary" data-target="#editModal" data-loginidedit = "<%=loginIdEdit %>">Edit</button>
+	        	</form>	
+				
+				
 
-			 </div>
-            </div>
-          </div>
+  
+				
+				
+				
+				
+				
+				
+				
+	        		<?php	        	
+					echo("</td></tr>\n"); 
+                }         	 		
+                	echo '</table>';
 
 			
+  }
+  else
+  {
+  	echo "only dispatchers can view this page";
+  }
 
-
-
+			  ?>
+				  </div>
+			  </div>
+            </div>
+        </div>
     </header>
    
 
@@ -118,9 +131,12 @@ require_once("navbar.php")
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+	
+	
 
 </body>
 
 </html>
 
-		
+
+
