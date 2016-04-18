@@ -11,7 +11,7 @@ if ($conn->connect_error)
  {
     die("Connection failed: " . $conn->connect_error);
 } 
-$drop = "DROP TABLE Booking,Status,Dispatcher,Taxi,Customer";
+$drop = "DROP TABLE Booking,Dispatcher,Taxi,Customer";
 if ($conn->query($drop) === TRUE) {
     echo "Tables dropped";
 } else {
