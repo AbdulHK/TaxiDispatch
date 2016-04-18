@@ -35,17 +35,17 @@ require_once("navbar.php")
 
 				                        $_SESSION["Booking"]=$_POST['bookingid'];
 				                        $ID=$_POST['bookingid'];
-				                        echo "Booking ID: " .$_SESSION["Booking"];
+				                        echo "Booking ID: " .$_SESSION[""];
 
 				                    }
 				                    else
 				                    {
 				                    	?>
-		<input type="text" class="form-control"  id="bookingid" name="bookingid" placeholder="Enter booking id" ></input>
+		<input type="text" class="form-control"  id="stat" name="stat" placeholder="Enter booking id" ></input>
 		</form>
 		<?php
 		}
- 			if(isset($_POST['bookingid']))
+ 			if(isset($_POST['stat']))
 	{
 						                        	echo '	</form>';
 
