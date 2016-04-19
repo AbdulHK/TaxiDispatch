@@ -33,7 +33,7 @@ require_once("navbar.php")
 						};
 						</script>
 					
-					<br><button id="myButton2" class="btn btn-primary btn-block" >Report 2</button></br>
+					<br><button id="myButton2" class="btn btn-primary btn-block" >Dispatcher Report</button></br>
 
 						<script type="text/javascript">
 						document.getElementById("myButton2").onclick = function () {
@@ -41,19 +41,19 @@ require_once("navbar.php")
 						};
 						</script>
 					
-					<button id="myButton3" class="btn btn-primary btn-block" >Report 3</button>
+					<button id="myButton3" class="btn btn-primary btn-block" >Monthly Report(based on bookingtime)</button>
 
 						<script type="text/javascript">
 						document.getElementById("myButton3").onclick = function () {
-						location.href = "index.php";
+						location.href = "monthlyreport.php";
 						};
 						</script>
 						
-					<br><button id="myButton4" class="btn btn-primary btn-block" >Report 4</button></br>
+					<br><button id="myButton4" class="btn btn-primary btn-block" >Monthly Report(based on pickup time)</button></br>
 
 						<script type="text/javascript">
 						document.getElementById("myButton4").onclick = function () {
-						location.href = "index.php";
+						location.href = "monthlyreport1.php";
 						};
 						</script>
 						

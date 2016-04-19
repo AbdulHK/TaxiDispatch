@@ -14,6 +14,8 @@ require_once("navbar.php")
 					<a href="book.php">Phone Bookings</a>
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
+					<a href="updatetaxi.php">Update Taxi Status</a>
+
 				</div>
 			
 				<div class="header-content-inner_3" >
@@ -160,7 +162,7 @@ require_once("navbar.php")
 
 				?>
 
-				<form method="post" action="updatestats.php">
+				<form method="post" action="updatetaxi.php">
 	        <button class="btn btn-primary"type="submit" name="stat" id="stat"  value=" <?php echo "$row[Stats]"?>">Update Taxi
 	        </button>
 	        	</form>	

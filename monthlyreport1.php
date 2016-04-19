@@ -19,7 +19,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Employee Report</title>
+    <title>Monthly Report</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -31,7 +31,7 @@ session_start();
     <div class="container">
 			
         
-		<h2>All Drivers -
+		<h2>Dispatcher Report -
 		<script language="javascript"> 
 		var today = new Date(); 
 		document.write(today.toDateString()); 
@@ -43,9 +43,14 @@ session_start();
 		
 		 <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Licence Plate</th>
+                    <th>Booking ID</th>
+                    <th>Pickup Location</th>
+                    <th>Dropoff Location</th>
+                    <th>Taxi ID</th>
+                    <th>Booking Time</th>
+                    <th>Total</th>
+                    <th>Passengers</th>
+
                 </tr>
             </thead>
 			
@@ -56,31 +61,53 @@ session_start();
 		
 		
 		<?php
-					  		require_once("DB/DB.php");
+
+		require_once("DB/DB.php");
 
  
-			$sql = "select FirstName,LastName, Licenseplate from taxi";
-
+		$sql = "select * from Booking where MONTH(BookingTime) = MONTH(CURDATE());";
+		$sql1="select sum(Total) as sum from Booking";
 
              $rs_result = mysql_query($sql); //run the query
+             $total=mysql_num_rows($rs_result);
+
+             $sum1 = mysql_query($sql1); //run the query
+              $sum2 = mysql_fetch_assoc($sum1);
+              $sum = $sum2['sum'];
+
+
+
+
 
 
             while($row = mysql_fetch_assoc($rs_result))
                 {
 				echo("<tr><td>"); 
-				echo($row['FirstName']);
+				echo($row['BookingID']);
 				echo("</td><td>");
-				echo($row['LastName']);
+				echo($row['PickupLoc']);
 				echo("</td><td>");
-				echo($row['Licenseplate']);
+				echo($row['DropoffLoc']);
+				echo("</td><td>");
+				echo($row['TaxiID']);
+				echo("</td><td>");
+				echo($row['BookingTime']);
+				echo("</td><td>");
+				echo($row['Total']);
+				echo("</td><td>");
+				echo($row['Passengers']);
 				echo("</td></tr>");
 				}
-			
 				
+								echo("<td>"); 
+
 		 
-             
-           
-            
+
+		echo "total money made" . $sum;
+				echo("</td><td>");
+
+		echo "\t \t \tTotal bookings made: " . $total;
+     					
 			?>
 			</tbody>
         </table>
