@@ -1,5 +1,5 @@
 <?php
-require_once("navbar.php")
+require_once("navbar.php");
 ?>
     <header class="login-bg">
         <div class="header-content">
@@ -35,11 +35,15 @@ require_once("navbar.php")
 					echo "logged in";
                     $_SESSION["dispatcherid"]= $ID;
 					$_SESSION['name'] = $name ; 
-					$_SESSION['success'] = "Welcome, ".$name; 
+					$_SESSION['success'] = "Welcome, ".$name;
+					header("Location:dashboard.php");
+		
 		}else 
         {
-			echo "sorry";
-			$_SESSION["error"] = "Incorrect password OR username."; 
+
+			echo " Incorrect password OR username.";
+			$_SESSION["error"] = "Incorrect password OR username.";
+			header("Location:dispatcherlogin.php");
 
 
 		}
@@ -67,6 +71,7 @@ require_once("navbar.php")
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+	
 
 </body>
 
