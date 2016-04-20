@@ -166,12 +166,12 @@ require_once("navbar.php")
 			  url: 'query.php',
 			  type: 'post',
 			  data: 'rating='+clickedButtonId,
-			  success: function(output) 
+			   success: function(output) 
 			  {
-				  alert('success, server says '+output);
+				  
 			  }, error: function()
 			  {
-				  alert('something went wrong, rating failed');
+				  alert('Sorry, something went wrong...');
 			  }
 		   });
 			
