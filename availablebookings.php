@@ -38,8 +38,7 @@ require_once("navbar.php")
 					echo("</td><td>"); 
 					echo("Passengers");
 					echo("</td><td>"); 
-					echo("Taxi");
-					echo("</td><td>"); 
+					 
 					echo("Pick up Loc"); 
 					echo("</td><td>"); 
 					echo("Booking Time");
@@ -119,7 +118,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page']))
 		echo '<td>' . mysql_result($result, $i, 'Phone') . '</td>';
 				}				
 		echo '<td>' . mysql_result($result, $i, 'Passengers') . '</td>';
-		echo '<td>' . mysql_result($result, $i, 'TaxiID') . '</td>';
+		
 		echo '<td>' . mysql_result($result, $i, 'PickupLoc') . '</td>';
 		echo '<td>' . mysql_result($result, $i, 'BookingTime') . '</td> <td>';
 				?>
