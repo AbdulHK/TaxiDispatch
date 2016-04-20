@@ -83,21 +83,14 @@ require_once("navbar.php")
 
 				?>
 
-				<form method="post" action="updatestats.php">
-	        <button href="#edit-modal" type="button" data-toggle="modal"
-                                    class="btn btn-primary" data-target="#editModal" data-loginidedit = "<%=loginIdEdit %>">Edit</button>
-	        	</form>	
 				
+	        <button id="freeButton"  type="button" data-toggle="modal"
+                                    class="btn btn-primary" data-target="#freeTaxiModal" data-id="<?php echo "$row[TaxiID]"?>">Free Taxi
+			
 				
-
-  
-				
-				
-				
-				
-				
-				
-				
+			</button>
+									
+			
 	        		<?php	        	
 					echo("</td></tr>\n"); 
                 }         	 		
@@ -132,7 +125,69 @@ require_once("navbar.php")
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
 	
+		
 	
+	
+	<div class="modal fade" id="freeTaxiModal" tabindex="-1" role="dialog" aria-labelledby="freeTaxiModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="freeTaxiModalLabel">Taxi is now available!</h4>
+            </div>
+            <div class="modal-body">
+              Record cost:
+			  
+			  <div class="form-group">
+			   
+			  <input type="text" class="form-control" name="myPayment" value="0" />
+			  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+	</div>
+	
+	<script type="text/javascript">
+				$(document).ready(function () {
+        $('#freeTaxiModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);//Button which is clicked
+            var clickedButtonId= button.data('id');//Get id of the button
+
+            
+			var testi = $("#freeTaxiModal input[name=myPayment]").val();
+			//$("#freeTaxiModal input[name=myInput]").val(clickedButtonId);
+            
+			
+			
+					 $.ajax({
+			  url: 'query.php',
+			  type: 'post',
+			  data: 'rating='+clickedButtonId,
+			  success: function(output) 
+			  {
+				  alert('success, server says '+output);
+			  }, error: function()
+			  {
+				  alert('something went wrong, rating failed');
+			  }
+		   });
+			
+	
+
+        })
+		
+		
+		$('#freeTaxiModal').on('hidden.bs.modal', function(event) {
+			location.reload();
+			})
+		
+		
+
+    });
+			</script>
 
 </body>
 
