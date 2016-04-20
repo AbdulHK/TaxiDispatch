@@ -15,9 +15,7 @@ require_once("navbar.php")
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
 					<a href="updatetaxi.php">Update Taxi Status</a>
-
 				</div>
-			
 			
 				<div class="header-content-inner_3" >
 				
@@ -36,24 +34,21 @@ require_once("navbar.php")
 					require_once("DB/DB.php");
 					
 					echo ("<tr><td>"); 
-					echo("Taxi ID");
+					echo("Current Job Start Time");
 					echo("</td><td>");
-
-					echo("Booking ID");
+					echo("Taxi ID"); 
 					echo("</td><td>");
-					echo("First Name"); 
+					
+					echo("Customer First Name"); 
 					echo("</td><td>"); 
-					echo("Last Name"); 
+					echo("Customer Last Name"); 
 					echo("</td><td>"); 
-					echo("Phone");
+					echo("Driver Phone");
 					echo("</td><td>"); 
-					echo("License");
+					
+					echo("Pick Up Location"); 
 					echo("</td><td>"); 
-					echo("Car Size");
-					echo("</td><td>"); 
-					echo("Start Time"); 
-					echo("</td><td>"); 
-					echo("Finish Time");
+					echo("Drop Off Location");
 					echo("</td><td>"); 
 					echo("Update");  
 					
@@ -71,24 +66,21 @@ require_once("navbar.php")
             while($row = mysql_fetch_assoc($rs_result1))
                 {
 				echo("<tr><td>"); 
-				echo($row['TaxiID']);
+				echo($row['BookingTime']);
 				echo("</td><td>");
+				echo($row['TaxiID']); 
+				echo("</td><td>"); 
 				
-				echo($row['BookingID']);
-				echo("</td><td>");
 				echo($row['FirstName']); 
 				echo("</td><td>"); 
 				echo($row['LastName']); 
 				echo("</td><td>"); 
 				echo($row['PhoneNo']);
 				echo("</td><td>"); 
-				echo($row['Licenseplate']);
-				echo("</td><td>"); 
-				echo($row['carsize']);
-				echo("</td><td>"); 
-				echo($row['StartTime']);
+				 
+				echo($row['PickupLoc']);
 				echo("</td><td>");
-				echo($row['StartTime']);
+				echo($row['DropoffLoc']);
 				echo("</td><td>"); 
 				
 
@@ -151,7 +143,7 @@ require_once("navbar.php")
 			  
 			  <div class="form-group">
 			   
-			  <input type="text" class="form-control" name="myPayment" value="5" />
+			  <input type="text" class="form-control" name="myPayment" value="0" />
 			  </div>
             </div>
             <div class="modal-footer">

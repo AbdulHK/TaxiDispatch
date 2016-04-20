@@ -8,15 +8,12 @@ require_once("navbar.php")
 			<div class="header-content-inner_dash">
 				<!--<div class="navbar"></div>-->
 
-				
 				<div id="menu-left">
 					<a href="dashboard.php">Dashboard</a>
 					<a href="AssignTaxi.php">Assign Taxi</a>
 					<a href="book.php">Phone Bookings</a>
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
-					<a href="updatetaxi.php">Update Taxi Status</a>
-
 				</div>
 			
 				<div class="header-content-inner_3" >
@@ -108,20 +105,7 @@ else 	{
 			echo ("</tr>");
 			echo '<td>' . "Total: "."" . '</td>';
 			echo '<td>' ;
-				if( $row['Total'] == NULL)
-			{
-			?>
-			<form  method="post" action="AssignTaxi1.php">
-
-		
-
-		<?php
-			}
-		else
-		{
 			echo($row['Total']).'</td>';
-		}
-			
 			echo '</td>' ;
 			echo ("</tr>");
 			echo '<td>' . "Taxi ID: "."" . '</td>';
@@ -129,6 +113,7 @@ else 	{
 			if( $row['TaxiID'] == NULL)
 			{
 			?>
+				<form  method="post" action="AssignTaxi1.php">
 
 		<input type="text" class="form-control" id="taxiid" name="taxiid" placeholder="Enter Taxi ID" ></input>
 

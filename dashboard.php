@@ -20,7 +20,7 @@ require_once("navbar.php")
 			
 				<div class="header-content-inner_3" >
 				
-					  <p>Bookings</p>
+					  <p>Next Bookings</p>
 					  <?php 
 				if ( isset($_SESSION["success"]) ) 
                             { 
@@ -30,8 +30,7 @@ require_once("navbar.php")
 					  <?php
 					  		require_once("DB/DB.php");
 					echo ("<tr><td>"); 
-					echo("Booking ID");
-					echo("</td><td>"); 
+					 
 					echo("First Name"); 
 					echo("</td><td>"); 
 					echo("Last Name"); 
@@ -39,12 +38,11 @@ require_once("navbar.php")
 					echo("Phone");
 					echo("</td><td>"); 
 					echo("Passengers");
-					echo("</td><td>"); 
-					echo("Taxi");
+					
 					echo("</td><td>"); 
 					echo("Pick up Loc"); 
 					echo("</td><td>"); 
-					echo("Booking Time");
+					echo("Pick Up Time");
 					echo("</td><td>"); 
 					echo("Assign Taxi"); 
 					echo("</td></tr>\n"); 
@@ -52,8 +50,8 @@ require_once("navbar.php")
 					from Booking
                     LEFT JOIN Customer 
                     ON Customer.CustID=Booking.CustID
-                     Where TaxiID is NULL
-                    ORDER BY BookingID DESC
+					WHERE TaxiID IS NULL
+                    ORDER BY BookingTime ASC
                     LIMIT 4";
 
 
@@ -63,8 +61,7 @@ require_once("navbar.php")
             while($row = mysql_fetch_assoc($rs_result))
                 {
 				echo("<tr><td>"); 
-				echo($row['BookingID']);
-				echo("</td><td>");
+				
 				if($row['CustID'] == NULL)
 				{ 	
 					$sql1="select FirstName,LastName,Phone from Booking
@@ -92,8 +89,7 @@ require_once("navbar.php")
 				echo("</td><td>"); 
 				echo($row['Passengers']);
 				echo("</td><td>"); 
-				echo($row['TaxiID']);
-				echo("</td><td>"); 
+				 
 				echo($row['PickupLoc']);
 				echo("</td><td>"); 
 				echo($row['BookingTime']);
@@ -109,7 +105,7 @@ require_once("navbar.php")
                 	echo '</table>';
 
 			?> 
-					   <p>Available Taxi's</p>
+					   <p>Available Taxis</p>
 					  <table class="table table-bordered" width="600">
 			<?php
 					echo ("<tr><td>"); 
@@ -124,15 +120,12 @@ require_once("navbar.php")
 					echo("License");
 					echo("</td><td>"); 
 					echo("Car Size");
-					echo("</td><td>"); 
-					echo("Start Time"); 
-					echo("</td><td>"); 
-					echo("Finish Time");
 					echo("</td>"); 
+					  
 					
 		$sql1 = "select * from Taxi
 			 Where Stats='Available'
-			ORDER BY TaxiID DESC
+			ORDER BY TaxiID ASC
 			LIMIT 5 ";
 
 
@@ -153,12 +146,17 @@ require_once("navbar.php")
 				echo($row['Licenseplate']);
 				echo("</td><td>"); 
 				echo($row['carsize']);
-				echo("</td><td>"); 
-				echo($row['StartTime']);
-				echo("</td><td>");
-				echo($row['StartTime']);
 				
-     	
+				
+				
+
+				?>
+
+		<!--		<form method="post" action="updatetaxi.php">
+	        <button class="btn btn-primary"type="submit" name="stat" id="stat"  value=" <?php echo "$row[Stats]"?>">Update Taxi
+	        </button>
+	        	</form>	 -->
+	        		<?php	        	
 					echo("</td></tr>\n"); 
                 }         	 		
                 	echo '</table>';

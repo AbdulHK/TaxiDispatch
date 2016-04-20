@@ -16,9 +16,7 @@ require_once("navbar.php")
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
 					<a href="updatetaxi.php">Update Taxi Status</a>
-
 				</div>
-			
 				<div class="header-content-inner_3" >
 				 <h2>Print Reports</h2>
 				

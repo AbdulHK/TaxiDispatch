@@ -8,7 +8,6 @@ require_once("navbar.php")
 			<div class="header-content-inner_dash">
 				<!--<div class="navbar"></div>-->
 
-				
 				<div id="menu-left">
 					<a href="dashboard.php">Dashboard</a>
 					<a href="AssignTaxi.php">Assign Taxi</a>
@@ -16,7 +15,6 @@ require_once("navbar.php")
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
 					<a href="updatetaxi.php">Update Taxi Status</a>
-
 				</div>
 			
 				<div class="header-content-inner_3" >
@@ -53,7 +51,6 @@ require_once("navbar.php")
 					from Booking
                     LEFT JOIN Customer 
                     ON Customer.CustID=Booking.CustID
-                    Where Completed=0
                     ORDER BY BookingID DESC
 					";
 
