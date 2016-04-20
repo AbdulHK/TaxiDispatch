@@ -28,7 +28,7 @@
 
                             
  		$ID= $_SESSION["Booking"];
-		$total = $_POST['total'];
+		//$total = $_POST['total'];
         $TaxiID = $_POST['taxiid'];
         $dID=$_SESSION["dispatcherid"];
         $psngr=$_SESSION["psngrs"];
@@ -36,7 +36,7 @@
         $sql2="Update Taxi Set Stats='Busy' where TaxiID='$TaxiID'";
        // $sql3"select Stats from Taxi where TaxiID='$TaxiID' and stat";
 
-		$sql="UPDATE Booking Set Total='$total',TaxiID='$TaxiID',DispatcherID='$dID'
+		$sql="UPDATE Booking Set TaxiID='$TaxiID',DispatcherID='$dID'
 			Where BookingID='$ID'";
 			$rs_result = mysql_query($sql1); //run the query
 			$carsize=mysql_fetch_array($rs_result);

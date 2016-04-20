@@ -50,6 +50,7 @@ require_once("navbar.php")
 					from Booking
                     LEFT JOIN Customer 
                     ON Customer.CustID=Booking.CustID
+                    Where Completed=0
                     ORDER BY BookingID DESC
 					";
 

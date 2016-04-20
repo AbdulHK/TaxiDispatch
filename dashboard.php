@@ -52,6 +52,7 @@ require_once("navbar.php")
 					from Booking
                     LEFT JOIN Customer 
                     ON Customer.CustID=Booking.CustID
+                     Where TaxiID is NULL
                     ORDER BY BookingID DESC
                     LIMIT 4";
 

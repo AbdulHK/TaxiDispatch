@@ -110,7 +110,7 @@ else 	{
 			?>
 			<form  method="post" action="AssignTaxi1.php">
 
-		<input type="text" class="form-control" id="total" name="total" placeholder="Enter total" ></input>
+		
 
 		<?php
 			}
