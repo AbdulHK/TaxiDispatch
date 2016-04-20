@@ -35,11 +35,15 @@ require_once("navbar.php")
                     echo "logged in";
                     $_SESSION["custid"] = $ID ; 
                     $_SESSION['name'] = $name ; 
-                    $_SESSION['custsucess'] = "Welcome, ".$name; 
+                    $_SESSION['custsucess'] = "Welcome, ".$name;
+                    header("Location:index.php");
+ 
 		}else 
         {
 			echo "sorry";
-			$_SESSION["error"] = "Incorrect password OR username."; 
+			$_SESSION["error"] = "Incorrect password OR username.";
+			header("Location:customerlogin.php");
+ 
 
 
 		}

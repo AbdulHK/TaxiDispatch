@@ -72,6 +72,16 @@ require_once("navbar.php");
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
 	
+<<<<<<< HEAD
+=======
+	<script type="text/javascript">
+		$(window).load(function(){
+        
+		location.href = "dashboard.php";
+        		
+		});
+	</script>
+>>>>>>> 4bfcab9299a63fce38046b249bc8e68d0d49b45d
 
 </body>
 

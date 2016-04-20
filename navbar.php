@@ -90,8 +90,7 @@ session_start();
                         {
                             ?>
 
-                                <a class="navbar-brand" href="customerlogin.php">Customer Login</a>
-                                <a class="navbar-brand" href="dispatcherlogin.php">Dispatcher Login</a>
+                                
                                 <a class="navbar-brand" href="registration.php">Register</a>
                                 <a class="navbar-brand page-scroll text center">
 
