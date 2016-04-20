@@ -17,6 +17,7 @@ require_once("navbar.php")
         $firstname = $_POST['inputfirstname'];
         $lastname = $_POST['inputlastname'];
         $pass = $_POST['inputpassword'];
+        $cnfrm= $_POST['inputconfirmpassword'];
         $addr1 = $_POST['inputaddress'];
         $addr2 = $_POST['inputaddress2'];
         $mobile = $_POST['inputphone'];
@@ -25,6 +26,8 @@ require_once("navbar.php")
         // To protect MySQL injection 
         $pass= stripslashes($pass);
         $pass= mysql_real_escape_string($pass);
+        $cnfrm= stripslashes($cnfrm);
+        $cnfrm= mysql_real_escape_string($cnfrm);
         $firstname= stripslashes($firstname);
         $lastname= stripslashes($lastname);
         $firstname= mysql_real_escape_string($firstname);
@@ -38,7 +41,8 @@ require_once("navbar.php")
         $email= stripslashes($email);
         $email= mysql_real_escape_string($email);
         //add it to the users table
-
+        if(strcasecmp($pass, $cnfrm) ==0)
+        {
         $cust="INSERT INTO Customer (`Password`,`FirstName`,`LastName`,`Phone`,`Address1`,`Address2`,`Email`) VALUES ('$pass','$firstname','$lastname','$mobile','$addr1','$addr2','$email')";
 
 		if(mysql_query($cust)== TRUE)
@@ -49,6 +53,11 @@ require_once("navbar.php")
 		{
 			echo" something is not quite right.";
 		}
+    }
+    else
+    {
+        echo "password does not match";
+    }
 		mysql_close($conn);
         ?>
 					
