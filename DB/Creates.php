@@ -85,6 +85,7 @@ Total DECIMAL,
 Time TIMESTAMP,
 BookingTime DATETIME,
 Deleted VARCHAR(1) DEFAULT 'N',
+Completed TINYINT(1) NOT NULL DEFAULT '0',
 FOREIGN KEY (CustID) REFERENCES Customer(CustID),
 FOREIGN KEY (TaxiID) REFERENCES Taxi(TaxiID),
 FOREIGN KEY (DispatcherID) REFERENCES Dispatcher(DispatcherID)

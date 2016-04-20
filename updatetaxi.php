@@ -34,7 +34,10 @@ require_once("navbar.php")
 					
 					echo ("<tr><td>"); 
 					echo("Taxi ID");
-					echo("</td><td>"); 
+					echo("</td><td>");
+
+					echo("Booking ID");
+					echo("</td><td>");
 					echo("First Name"); 
 					echo("</td><td>"); 
 					echo("Last Name"); 
@@ -51,10 +54,12 @@ require_once("navbar.php")
 					echo("</td><td>"); 
 					echo("Update");  
 					
-		$sql1 = "select * from Taxi
-			 Where Stats='Busy'
-			ORDER BY TaxiID DESC
-			LIMIT 5 ";
+		$sql1 = "select taxi.*,Booking.*
+			FROM taxi
+			JOIN Booking ON Booking.TaxiID=taxi.TaxiID
+			WHERE Stats='Busy' AND Completed=0
+			
+			LIMIT 10 ";
 
 
              $rs_result1 = mysql_query($sql1); //run the query
@@ -64,6 +69,9 @@ require_once("navbar.php")
                 {
 				echo("<tr><td>"); 
 				echo($row['TaxiID']);
+				echo("</td><td>");
+				
+				echo($row['BookingID']);
 				echo("</td><td>");
 				echo($row['FirstName']); 
 				echo("</td><td>"); 
@@ -140,7 +148,7 @@ require_once("navbar.php")
 			  
 			  <div class="form-group">
 			   
-			  <input type="text" class="form-control" name="myPayment" value="0" />
+			  <input type="text" class="form-control" name="myPayment" value="5" />
 			  </div>
             </div>
             <div class="modal-footer">
@@ -154,10 +162,19 @@ require_once("navbar.php")
 				$(document).ready(function () {
         $('#freeTaxiModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);//Button which is clicked
-            var clickedButtonId= button.data('id');//Get id of the button
+             clickedButtonId= button.data('id');//Get id of the button
+
+ 	
+
+        }) 
+		
+		
+		$('#freeTaxiModal').on('hidden.bs.modal', function(event) {
+			
+			
 
             
-			var testi = $("#freeTaxiModal input[name=myPayment]").val();
+			var payment = $("#freeTaxiModal input[name=myPayment]").val();
 			//$("#freeTaxiModal input[name=myInput]").val(clickedButtonId);
             
 			
@@ -165,7 +182,7 @@ require_once("navbar.php")
 					 $.ajax({
 			  url: 'query.php',
 			  type: 'post',
-			  data: 'driverID='+clickedButtonId,
+			  data: 'driverID='+clickedButtonId+'&payment='+payment,
 			   success: function(output) 
 			  {
 				  
@@ -175,12 +192,6 @@ require_once("navbar.php")
 			  }
 		   });
 			
-	
-
-        })
-		
-		
-		$('#freeTaxiModal').on('hidden.bs.modal', function(event) {
 			location.reload();
 			})
 		
