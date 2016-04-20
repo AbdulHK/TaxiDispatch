@@ -100,7 +100,7 @@ session_start();
 				echo("</td></tr>");
 				}
 				
-								echo("<td>"); 
+				echo("<td>"); 
 
 		 echo "ID : " . $dID;
 				echo("</td><td>");

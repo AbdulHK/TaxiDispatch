@@ -46,7 +46,7 @@ require_once("navbar.php")
 
 						<script type="text/javascript">
 						document.getElementById("myButton3").onclick = function () {
-						location.href = "monthlyreport.php";
+						window.open = "monthlyreport.php";
 						};
 						</script>
 						
@@ -54,7 +54,7 @@ require_once("navbar.php")
 
 						<script type="text/javascript">
 						document.getElementById("myButton4").onclick = function () {
-						location.href = "monthlyreport1.php";
+						window.open = "monthlyreport1.php";
 						};
 						</script>
 						

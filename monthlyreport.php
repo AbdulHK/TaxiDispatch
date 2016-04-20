@@ -31,7 +31,7 @@ session_start();
     <div class="container">
 			
         
-		<h2>Dispatcher Report -
+		<h2>Monthly Report  Based on-
 		<script language="javascript"> 
 		var today = new Date(); 
 		document.write(today.toDateString()); 
@@ -47,7 +47,7 @@ session_start();
                     <th>Pickup Location</th>
                     <th>Dropoff Location</th>
                     <th>Taxi ID</th>
-                    <th>Booking Time</th>
+                    <th>Time</th>
                     <th>Total</th>
                     <th>Passengers</th>
 
@@ -65,7 +65,7 @@ session_start();
 		require_once("DB/DB.php");
 
  
-		$sql = "select * from Booking where MONTH(Time) = MONTH(CURDATE());";
+		$sql = "select * from Booking where MONTH(Time) = MONTH(CURDATE()) AND TaxiID IS NOT NULL;";
 		$sql1="select sum(Total) as sum from Booking";
 
              $rs_result = mysql_query($sql); //run the query
@@ -91,7 +91,7 @@ session_start();
 				echo("</td><td>");
 				echo($row['TaxiID']);
 				echo("</td><td>");
-				echo($row['BookingTime']);
+				echo($row['Time']);
 				echo("</td><td>");
 				echo($row['Total']);
 				echo("</td><td>");
@@ -103,7 +103,7 @@ session_start();
 
 		 
 
-		echo "total money made" . $sum;
+		echo "total money made\t" . $sum;
 				echo("</td><td>");
 
 		echo "\t \t \tTotal bookings made: " . $total;
