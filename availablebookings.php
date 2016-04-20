@@ -47,10 +47,11 @@ require_once("navbar.php")
 					echo("Assign Taxi"); 
 					echo("</td></tr>\n"); 
 		
-			$sql = "select Booking.*,Customer.*
+			$sql = "select Customer.*,Booking.*
 					from Booking
                     LEFT JOIN Customer 
-                    ON Customer.CustID=Booking.CustID
+                    ON Booking.CustID=Customer.CustID
+                    Where Booking.Completed=0
                     ORDER BY BookingID DESC
 					";
 
