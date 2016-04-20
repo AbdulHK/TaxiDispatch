@@ -56,7 +56,7 @@ require_once("navbar.php")
 			FROM taxi
 			JOIN Booking ON Booking.TaxiID=taxi.TaxiID
 			WHERE Stats='Busy' AND Completed=0
-			
+		
 			LIMIT 10 ";
 
 
@@ -70,10 +70,24 @@ require_once("navbar.php")
 				echo("</td><td>");
 				echo($row['TaxiID']); 
 				echo("</td><td>"); 
-				
+							if($row['CustID'] != NULL )
+							{
+								$cust="select * from Customer where CustID='$row[CustID]'";
+								        $cust1 = mysql_query($cust); //run the query
+								        while($row1=mysql_fetch_assoc($cust1))
+								        {
+								        	echo($row1['FirstName']); 
+											echo("</td><td>"); 
+											echo($row1['LastName']); 
+								        }
+
+							}
+				else
+{
 				echo($row['FirstName']); 
 				echo("</td><td>"); 
 				echo($row['LastName']); 
+			}
 				echo("</td><td>"); 
 				echo($row['PhoneNo']);
 				echo("</td><td>"); 

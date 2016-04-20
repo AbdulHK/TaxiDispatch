@@ -57,7 +57,6 @@ require_once("navbar.php")
 
 
             $result = mysql_query($sql);
-			$row = mysql_fetch_assoc($result);
 
 	// number of results to show per page
 	$per_page = 6;
