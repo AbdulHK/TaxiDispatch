@@ -165,7 +165,7 @@ require_once("navbar.php")
 					 $.ajax({
 			  url: 'query.php',
 			  type: 'post',
-			  data: 'rating='+clickedButtonId,
+			  data: 'driverID='+clickedButtonId,
 			   success: function(output) 
 			  {
 				  

@@ -5,9 +5,9 @@
 
 require_once("DB/DB.php");
 
-$rating = $_POST['rating'];
+$driverID = $_POST['driverID'];
 
-mysql_query("UPDATE taxi SET Stats='Available' WHERE TaxiID= '$rating' ");
+mysql_query("UPDATE taxi SET Stats='Available' WHERE TaxiID= '$driverID' ");
 
 ?>
 
