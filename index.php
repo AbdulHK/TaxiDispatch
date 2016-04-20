@@ -20,7 +20,7 @@ require_once("navbar.php")
 				
                 <h1>Welcome to Kadab Cabs</h1>
                 <hr>
-                <a href="index.php" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <a href="#contact" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>
     </header>
