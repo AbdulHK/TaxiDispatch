@@ -222,6 +222,19 @@ background: url('../img/header1.png');
 
 }
 
+.book-bg {
+background: url('../img/header2.png');
+  position: relative;
+  width: 100%;
+  background-position: center;
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+
+}
+
+
 .header-content-inner_dash {
 	max-width: 1600px;
 

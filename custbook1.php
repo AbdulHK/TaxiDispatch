@@ -2,7 +2,7 @@
 require_once("navbar.php")
 ?>
 
-    <header class="login-bg">
+    <header class="book-bg">
         <div class="header-content">
 			<img border="0" alt="Kadab"  src="img/icon.png">
             <div class="header-content-inner">

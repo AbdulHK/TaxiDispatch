@@ -10,9 +10,7 @@ require_once("navbar.php")
 				<form role="form" class="container-fluid" action="book.php" method="POST">
 					<div class="form-group">
 					<div class="controls controls-row row-fluid">
-						<input type="text" class="Formsize" id="inputpickup" name="inputpickup" placeholder="Pickup" />
-                        <input type="text" class="Formsize"  id="inputdropoff" name="inputdropoff" placeholder="DropOff" />
-                        <input type="datetime-local" class="Formsize" placeholder="Date" id="inputdatetime" name="inputdatetime" />
+						<input type="text" class="Formsize" id="inputpickup" name="inputpickup" placeholder="Pickup" /><input type="text" class="Formsize"  id="inputdropoff" name="inputdropoff" placeholder="DropOff" /><input type="datetime-local" class="Formsize" placeholder="Date" id="inputdatetime" name="inputdatetime" />
                         <button type="submit" class="Btnsize btn-primary btn-xl">Book</button>
 					</div>
 					</div>
