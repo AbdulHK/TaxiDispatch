@@ -16,6 +16,7 @@ require_once("navbar.php")
 					<a href="book.php">Phone Bookings</a>
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
+					<a href="updatetaxi.php">Update Taxi Status</a>
 				</div>
 				<?php
 }
@@ -87,7 +88,7 @@ require_once("navbar.php")
 					       
 				</div>
 				<div class="form-group">
-					<label for="inputpassengers" class="col-md-4">number of passengers</label>
+					<label for="inputpassengers" class="col-md-4">Number of Passengers</label>
                     <div class="col-md-8">
                     <input type="number" class="form-control" id="inputpassengers" name="inputpassengers" placeholder="No of passenger" min="1" max="7"></input>
 					</div>
