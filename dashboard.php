@@ -128,8 +128,7 @@ require_once("navbar.php")
 					echo("Start Time"); 
 					echo("</td><td>"); 
 					echo("Finish Time");
-					echo("</td><td>"); 
-					echo("Update");  
+					echo("</td>"); 
 					
 		$sql1 = "select * from Taxi
 			 Where Stats='Available'
@@ -158,16 +157,8 @@ require_once("navbar.php")
 				echo($row['StartTime']);
 				echo("</td><td>");
 				echo($row['StartTime']);
-				echo("</td><td>"); 
 				
-
-				?>
-
-				<form method="post" action="updatetaxi.php">
-	        <button class="btn btn-primary"type="submit" name="stat" id="stat"  value=" <?php echo "$row[Stats]"?>">Update Taxi
-	        </button>
-	        	</form>	
-	        		<?php	        	
+     	
 					echo("</td></tr>\n"); 
                 }         	 		
                 	echo '</table>';

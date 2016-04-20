@@ -9,12 +9,15 @@
 		
 			<div class="header-content-inner_dash">
 				<!--<div class="navbar"></div>-->
+				
 				<div id="menu-left">
 					<a href="dashboard.php">Dashboard</a>
 					<a href="AssignTaxi.php">Assign Taxi</a>
 					<a href="book.php">Phone Bookings</a>
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
+					<a href="updatetaxi.php">Update Taxi Status</a>
+
 				</div>
 			
 				<div class="header-content-inner_3" >

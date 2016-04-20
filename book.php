@@ -16,7 +16,10 @@ require_once("navbar.php")
 					<a href="book.php">Phone Bookings</a>
 					<a href="reports.php">Reports</a>
 					<a href="availablebookings.php">All bookings</a>
+					<a href="updatetaxi.php">Update Taxi Status</a>
+
 				</div>
+			
 				<?php
 }
 ?>
